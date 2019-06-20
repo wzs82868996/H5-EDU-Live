@@ -3,6 +3,7 @@
 Client(**id**,user_name,password) 用户
 Course(**id**,course_name,teacher,price,content) 课程信息
 Teach(**id**,course_id,student_id,teacher_id) 授课-学习
+Teacher(**id**,teacher_name) 老师
 
 后台：
 Admin(**id**,user_name,password) 管理员
