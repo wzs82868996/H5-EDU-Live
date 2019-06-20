@@ -9,5 +9,7 @@ Admin(**id**,user_name,password) 管理员
 Order(**id**,client_id,course_id,price) 订单
 BlockedWord(**id**,text) 屏蔽词
 BlockedUser(**id**,user_id) 被禁用户
+BlockedComments(**id**,client_id,text) 被禁的评论
+Assessor(**id**,user_name) 审核员
 
 
