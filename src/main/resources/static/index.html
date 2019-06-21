@@ -4,14 +4,19 @@
         <script src="assets/js/jquery-3.3.1.js"></script>
         <script src="assets/js/amazeui.js"></script>
         <script src="assets/js/verify.js"></script>
+        <script>
+            function getExam() {
+
+            }
+        </script>
     </head>
 
     <body>
-    <form action="/studentExam">
+    <form action="/studentExam" method="post">
         <input type="text" name="name"/>
         <input type="password" name="passwd"/>
         <button type="submit" id="aaa">test</button>
     </form>
-            <button id="exam">exam</button>
+    <button id="exam" href="/studentExams" onclick="getExam()">exam</button>
     </body>
 </html>

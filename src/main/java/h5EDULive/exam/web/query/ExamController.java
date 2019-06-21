@@ -1,5 +1,6 @@
-package h5EDULive.exam.controller;
+package h5EDULive.exam.web.query;
 
+import h5EDULive.exam.web.dto.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,11 +8,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ExamController {
     @RequestMapping("/studentExam")
-    public String showUserMessage(@ModelAttribute User user) {
+    public void showUserMessage(@ModelAttribute User user) {
         System.out.println(user.getName() + "\n" + user.getPasswd());
-        return "index";
+//        return "index";
     }
 
+    @RequestMapping("/studentExams")
+    public String getExams() {
+        return "exam.html";
+    }
 
 }
 

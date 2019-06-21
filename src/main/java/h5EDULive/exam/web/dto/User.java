@@ -1,4 +1,4 @@
-package h5EDULive.exam.controller;
+package h5EDULive.exam.web.dto;
 
 public class User {
     private String name;
