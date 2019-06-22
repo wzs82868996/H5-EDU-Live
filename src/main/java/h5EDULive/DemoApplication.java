@@ -1,4 +1,4 @@
-package h5EDULive.exam;
+package h5EDULive;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
