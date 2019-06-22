@@ -12,11 +12,14 @@
     </head>
 
     <body>
-    <form action="/studentExam" method="post">
-        <input type="text" name="name"/>
-        <input type="password" name="passwd"/>
-        <button type="submit" id="aaa">test</button>
-    </form>
-    <button id="exam" href="/studentExams" onclick="getExam()">exam</button>
+        <form action="/studentExam" method="get">
+            <input type="text" name="name"/>
+            <input type="password" name="passwd"/>
+            <button type="submit">test</button>
+        </form>
+        <form action="/fileTest" method="post" enctype="multipart/form-data">
+            <input type="file" name="icon"/>
+            <button type="submit">file</button>
+        </form>
     </body>
 </html>
