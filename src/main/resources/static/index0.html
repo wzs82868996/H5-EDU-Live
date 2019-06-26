@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <script src="assets/js/jquery-3.3.1.js"></script>
+        <script src="assets/js/amazeui.js"></script>
+        <script src="assets/js/verify.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#test").click(function(){
+                    var solutions = {};
+                    solutions.q0 = 2;
+                    solutions.q1 = 3;
+                    solutions.q2 = 4;
+                    solutions.q3 = 2;
+
+                    $.ajax({
+                        url: "/test",
+                        data: JSON.stringify(solutions),
+                        type: "POST",
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "text/plain",
+                        success: function(response){
+                            var s = JSON.parse(response);
+                            for(var key in s) {
+                                alert(key+":"+s[key]);
+                            }
+                        },
+                        error: function(response){
+                            alert("error")
+                            var json = response.data
+                            alert(json)
+                        }
+                    });
+                });
+            });
+        </script>
+    </head>
+
+    <body>
+        <form action="/test" method="get">
+            <button type="submit">test</button>
+        </form>
+    </body>
+</html>
