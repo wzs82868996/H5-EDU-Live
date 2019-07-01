@@ -5743,7 +5743,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	          if (watchedEvent === "" || watchedEvent === event.type) {
 	            var $this = $(this),
-	              target = slider.controlNav.index($this);
+	              target = slider.controlNav.index0($this);
 
 	            if (!$this.hasClass(namespace + 'active')) {
 	              slider.direction = (target > slider.currentSlide) ? "next" : "prev";
@@ -5768,7 +5768,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	          if (watchedEvent === "" || watchedEvent === event.type) {
 	            var $this = $(this),
-	              target = slider.controlNav.index($this);
+	              target = slider.controlNav.index0($this);
 
 	            if (!$this.hasClass(namespace + 'active')) {
 	              (target > slider.currentSlide) ? slider.direction = "next" : slider.direction = "prev";
@@ -6586,7 +6586,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    slider.vars.added(slider);
 	  };
 	  slider.removeSlide = function(obj) {
-	    var pos = (isNaN(obj)) ? slider.slides.index($(obj)) : obj;
+	    var pos = (isNaN(obj)) ? slider.slides.index0($(obj)) : obj;
 
 	    // update count
 	    slider.count -= 1;
@@ -10306,7 +10306,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	PureView.prototype.activate = function($slide) {
 	  var options = this.options;
 	  var $slides = this.$slides;
-	  var activeIndex = $slides.index($slide);
+	  var activeIndex = $slides.index0($slide);
 	  var title = $slide.data('title') || '';
 	  var active = options.className.active;
 
@@ -10355,7 +10355,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  var $slides = this.$slides;
 	  var $active = $slides.filter('.am-active');
-	  var activeIndex = $slides.index($active);
+	  var activeIndex = $slides.index0($active);
 	  var rightSpring = 'am-animation-right-spring';
 
 	  if (activeIndex + 1 >= $slides.length) { // last one
@@ -10374,7 +10374,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  var $slides = this.$slides;
 	  var $active = $slides.filter('.am-active');
-	  var activeIndex = this.$slides.index(($active));
+	  var activeIndex = this.$slides.index0(($active));
 	  var leftSpring = 'am-animation-left-spring';
 
 	  if (activeIndex === 0) { // first one
