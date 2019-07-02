@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import java.util.List;
 
 public interface StudentCourseRepository extends JpaRepository<StudentCourse, Integer>, JpaSpecificationExecutor<StudentCourse> {
+
     List<StudentCourse> findByStuId(int id);
+
     void deleteByCourseIdAndStuId(int sdu_id, int course_id);
 }

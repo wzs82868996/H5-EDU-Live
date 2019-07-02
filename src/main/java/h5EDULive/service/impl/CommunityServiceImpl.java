@@ -17,18 +17,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class CommunityServiceImpl implements CommunityService {
-    @Autowired
+    @Resource
     private UserRepository userRepository;
-    @Autowired
+    @Resource
     private PostRepository postRepository;
-    @Autowired
+    @Resource
     private ResponseRepository responseRepository;
-    @Autowired
+    @Resource
     private PostResponseRepository postResponseRepository;
 
     @Override
@@ -66,6 +68,7 @@ public class CommunityServiceImpl implements CommunityService {
     }
 
     @Override
+    @Transactional
     public String addPost(int userId, String postInfo) {
         JSONObject jobj = JSON.parseObject(postInfo);
         Post post = new Post();
@@ -83,6 +86,7 @@ public class CommunityServiceImpl implements CommunityService {
     }
 
     @Override
+    @Transactional
     public String addResponse(int userId, String responseInfo) {
         User user = userRepository.findById(userId);
         JSONObject jobj = JSON.parseObject(responseInfo);
@@ -97,6 +101,7 @@ public class CommunityServiceImpl implements CommunityService {
     }
 
     @Override
+    @Transactional
     public String removePost(int postId) {
         try {
             List<PostResponse> postResponses = postResponseRepository.findAllByPostId(postId).getContent();
@@ -110,6 +115,7 @@ public class CommunityServiceImpl implements CommunityService {
     }
 
     @Override
+    @Transactional
     public String removeResponse(int resId) {
         try {
             responseRepository.deleteByResId(resId);
