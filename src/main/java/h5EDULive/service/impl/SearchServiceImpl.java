@@ -13,19 +13,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Pageable;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class SearchServiceImpl implements SearchService {
 
-    @Autowired
+    @Resource
     private CourseRepository courseRepository;
 
-    @Autowired
+    @Resource
     private ExamRepository examRepository;
 
-    @Autowired
+    @Resource
     private PostRepository postRepository;
 
 //    @Override

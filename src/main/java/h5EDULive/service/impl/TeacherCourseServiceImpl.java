@@ -5,12 +5,18 @@ import h5EDULive.dao.TeacherCourseRepository;
 import h5EDULive.dao.domain.TeacherCourse;
 import h5EDULive.service.TeacherCourseService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class TeacherCourseServiceImpl implements TeacherCourseService {
-    private final TeacherCourseRepository teacherCourseRepository;
-    private final CourseRepository courseRepository;
+    @Resource
+    private TeacherCourseRepository teacherCourseRepository;
+
+    @Resource
+    private CourseRepository courseRepository;
 
     public TeacherCourseServiceImpl(TeacherCourseRepository teacherCourseRepository, CourseRepository courseRepository) {
         this.teacherCourseRepository = teacherCourseRepository;
@@ -31,6 +37,7 @@ public class TeacherCourseServiceImpl implements TeacherCourseService {
 
     /* 添加课程 */
     @Override
+    @Transactional
     public boolean insert(int tchId, int courseId) {
         TeacherCourse TeacherCourse = new TeacherCourse();
         TeacherCourse.setTeacherId(tchId);
@@ -39,11 +46,13 @@ public class TeacherCourseServiceImpl implements TeacherCourseService {
     }
 
     @Override
+    @Transactional
     public void delete(int courseId) {
         teacherCourseRepository.deleteByCourseId(courseId);
     }
 
     /* 修改课程信息*/
+    @Transactional
     public void modifyInfo(int courseId, String dep)
     {
         courseRepository.updateDepicitionByCourseId(courseId, dep);
