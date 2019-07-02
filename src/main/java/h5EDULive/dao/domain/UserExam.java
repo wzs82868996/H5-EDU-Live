@@ -1,9 +1,8 @@
-package h5EDULive.web.dto;
+package h5EDULive.dao.domain;
 
 import h5EDULive.Util.Serialization;
 
 import javax.persistence.Entity;
-import java.io.*;
 import java.util.List;
 
 import javax.persistence.*;

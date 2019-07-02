@@ -1,4 +1,4 @@
-package h5EDULive.web.dto;
+package h5EDULive.dao.domain;
 
 public class Student {
     private String sNickname;
