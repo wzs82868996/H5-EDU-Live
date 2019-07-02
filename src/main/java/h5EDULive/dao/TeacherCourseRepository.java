@@ -11,7 +11,7 @@ public interface TeacherCourseRepository extends JpaRepository<TeacherCourse, In
 
     void deleteByCourseId(int courseId);
 
-    @Query(value = "select name from course where id in (select courseId from teacher_course where teacherId=?1)",nativeQuery = true)
+    @Query(value = "select name from course where id in (select course_id from teacher_course where teacher_id=?1)",nativeQuery = true)
     List<String> getList(int id);
 
 }
