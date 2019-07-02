@@ -2,13 +2,14 @@ package h5EDULive.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import h5EDULive.dao.CommunityRepository;
 import h5EDULive.dao.PostRepository;
 import h5EDULive.dao.PostResponseRepository;
 import h5EDULive.dao.ResponseRepository;
+import h5EDULive.dao.UserRepository;
 import h5EDULive.dao.domain.Post;
 import h5EDULive.dao.domain.PostResponse;
 import h5EDULive.dao.domain.Response;
+import h5EDULive.dao.domain.User;
 import h5EDULive.service.CommunityService;
 import h5EDULive.web.dto.PostDetail;
 import h5EDULive.web.dto.PostSummary;
@@ -69,9 +70,9 @@ public class CommunityServiceImpl implements CommunityService {
     public String addPost(int userId, String postInfo) {
         JSONObject jobj = JSON.parseObject(postInfo);
         Post post = new Post();
-        User user = userRepository.findByUserId(userId);
+        User user = userRepository.findById(userId);
         post.setTitle(jobj.get("title").toString());
-        post.setAuthor(user.getNickname());
+        post.setAuthor(user.getName());
         post.setHeat(0);
         post.setBody(jobj.get("body").toString());
         try {
@@ -84,11 +85,11 @@ public class CommunityServiceImpl implements CommunityService {
 
     @Override
     public String addResponse(int userId, String responseInfo) {
-        User user = userRepository.findByUserId(userId);
+        User user = userRepository.findById(userId);
         JSONObject jobj = JSON.parseObject(responseInfo);
         Response response = new Response();
         response.setpId((int)jobj.get("pId"));
-        response.setResponder(user.getNickName());
+        response.setResponder(user.getName());
         response.setContent(jobj.get("content").toString());
         response.setLike(0);
         response.setDislike(0);
