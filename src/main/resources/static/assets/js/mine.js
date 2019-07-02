@@ -210,13 +210,13 @@ $(function() {
 				aLi[i - 1].index = i;
 				//鼠标移过显示分数
 				aLi[i - 1].onmouseover = function() {
-					fnPoint(this.index0);
+					fnPoint(this.index);
 					//浮动层显示
 					oP.style.display = "block";
 					//计算浮动层位置
-					oP.style.left = oUl.offsetLeft + this.index0 * this.offsetWidth - 104 + "px";
+					oP.style.left = oUl.offsetLeft + this.index * this.offsetWidth - 104 + "px";
 					//匹配浮动层文字内容
-					oP.innerHTML = "<em><b>" + this.index0 + "</b> 分 " + aMsg[this.index0 - 1].match(/(.+)\|/)[1] + "</em>" + aMsg[this.index0 - 1].match(/\|(.+)/)[1]
+					oP.innerHTML = "<em><b>" + this.index + "</b> 分 " + aMsg[this.index - 1].match(/(.+)\|/)[1] + "</em>" + aMsg[this.index - 1].match(/\|(.+)/)[1]
 
 				};
 
@@ -229,9 +229,9 @@ $(function() {
 
 				//点击后进行评分处理
 				aLi[i - 1].onclick = function() {
-					iStar = this.index0;
+					iStar = this.index;
 					oP.style.display = "none";
-					oSpan.innerHTML = "<strong>" + (this.index0) + " 分</strong> (" + aMsg[this.index0 - 1].match(/\|(.+)/)[1] + ")"
+					oSpan.innerHTML = "<strong>" + (this.index) + " 分</strong> (" + aMsg[this.index - 1].match(/\|(.+)/)[1] + ")"
 				}
 			}
 
