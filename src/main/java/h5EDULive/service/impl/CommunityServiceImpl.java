@@ -14,7 +14,6 @@ import h5EDULive.service.CommunityService;
 import h5EDULive.web.dto.PostDetail;
 import h5EDULive.web.dto.PostSummary;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 

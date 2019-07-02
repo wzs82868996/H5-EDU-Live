@@ -31,7 +31,7 @@
 					tabBox.siblings( 'div' )
 						.addClass( 'hide' )
 						.end()
-						.eq( elem.index0() )
+						.eq( elem.index() )
 						.removeClass( 'hide' );
 				},
 					

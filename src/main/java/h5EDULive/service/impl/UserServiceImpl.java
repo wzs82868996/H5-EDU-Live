@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -35,7 +36,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean isRight(int id, String preCode) {
-        return userRepository.findById(id).getPassword().equals(preCode);
+        return new BCryptPasswordEncoder().matches(preCode, userRepository.findById(id).getPassword());
     }
 
     @Override
