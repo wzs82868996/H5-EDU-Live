@@ -7,6 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -33,41 +34,48 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean isRight(int id, String preCode) {
-        return userRepository.findById(id).getPassword().equals(preCode);
+        return new BCryptPasswordEncoder().matches(preCode, userRepository.findById(id).getPassword());
     }
 
     @Override
+    @Transactional
     public void updatePassword(int id, String newCode) {
         newCode= new BCryptPasswordEncoder().encode(newCode.trim());
         userRepository.updateUserPassword(id, newCode);
     }
 
     @Override
+    @Transactional
     public void updateName(int id, String name) {
         userRepository.updateUserName(id, name);
     }
 
     @Override
+    @Transactional
     public void updateMajor(int id, String major) {
         userRepository.updateUserMajor(id, major);
     }
 
     @Override
+    @Transactional
     public void updateGender(int id, String gender) {
         userRepository.updateUserGender(id, gender);
     }
 
     @Override
+    @Transactional
     public void updateBirth(int id, String birth) {
         userRepository.updateUserBirthday(id, birth);
     }
 
     @Override
+    @Transactional
     public void updateProfile(int id, String profile) {
         userRepository.updateUserProfile(id, profile);
     }
 
     @Override
+    @Transactional
     public void updateLocation(int id, String location) {
         userRepository.updateUserLocation(id, location);
     }
