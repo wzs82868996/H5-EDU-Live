@@ -1,6 +1,6 @@
 package h5EDULive.dao;
 
-import h5EDULive.web.dto.UserExam;
+import h5EDULive.dao.domain.UserExam;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
@@ -11,4 +11,6 @@ public interface UserExamRepository extends JpaRepository<UserExam, Integer>, Jp
     Page<UserExam> findByUserId(int userId);
 
     UserExam findByUserIdAndCourseId(int userId, int courseId);
+
+    void deleteByCourseId(int courseId);
 }

@@ -1,6 +1,8 @@
 package h5EDULive.dao;
 
-import h5EDULive.web.dto.Course;
+import h5EDULive.dao.domain.Course;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
@@ -12,6 +14,8 @@ public interface CourseRepository extends JpaRepository<Course, Integer>, JpaSpe
     Course findByCourseId(int id);
 
     Course findByName(String name);
+
+    Page<Course> findByKeys(String pattern, Pageable pageable);
 
 
     @Query(value = "select name from course natural join stu_Course where stu_id=?1",nativeQuery = true)
@@ -27,7 +31,5 @@ public interface CourseRepository extends JpaRepository<Course, Integer>, JpaSpe
 
     @Query(value = "update course set label=?2 where course_id=?1",nativeQuery = true)
     void updateLabelByCourseId(int courseId,String label);
-
-
 
 }

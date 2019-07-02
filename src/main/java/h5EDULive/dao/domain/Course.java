@@ -1,4 +1,4 @@
-package h5EDULive.web.dto;
+package h5EDULive.dao.domain;
 
 import javax.persistence.*;
 
@@ -16,8 +16,8 @@ public class Course {
     @Column(name = "pubdate")
     private String pubDate;
     private String state;
-    private int exam;
     private String video;
+    private String pic;
 
     public Course(){}
 
@@ -73,12 +73,12 @@ public class Course {
         this.state = state;
     }
 
-    public int getExam() {
-        return exam;
+    public String getPic() {
+        return pic;
     }
 
-    public void setExam(int exam) {
-        this.exam = exam;
+    public void setPic(int exam) {
+        this.pic = pic;
     }
 
     public String getVideo() {
