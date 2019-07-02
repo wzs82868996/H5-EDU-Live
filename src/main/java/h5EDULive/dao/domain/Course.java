@@ -9,17 +9,27 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "course_id")
     private int courseId;
+
     private String name;
     private String label;
     private String lecture;
     private String depiction;
+
     @Column(name = "pubdate")
     private String pubDate;
     private String state;
     private String video;
     private String pic;
 
-    public Course(){}
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
+    }
+
+    public Course(){ }
 
     public int getCourseId() {
         return courseId;
@@ -73,13 +83,6 @@ public class Course {
         this.state = state;
     }
 
-    public String getPic() {
-        return pic;
-    }
-
-    public void setPic(int exam) {
-        this.pic = pic;
-    }
 
     public String getVideo() {
         return video;

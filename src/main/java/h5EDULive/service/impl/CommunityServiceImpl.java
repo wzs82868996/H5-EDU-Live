@@ -2,33 +2,35 @@ package h5EDULive.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import h5EDULive.dao.CommunityRepository;
 import h5EDULive.dao.PostRepository;
 import h5EDULive.dao.PostResponseRepository;
 import h5EDULive.dao.ResponseRepository;
+import h5EDULive.dao.UserRepository;
 import h5EDULive.dao.domain.Post;
 import h5EDULive.dao.domain.PostResponse;
 import h5EDULive.dao.domain.Response;
+import h5EDULive.dao.domain.User;
 import h5EDULive.service.CommunityService;
 import h5EDULive.web.dto.PostDetail;
 import h5EDULive.web.dto.PostSummary;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class CommunityServiceImpl implements CommunityService {
-    @Autowired
+    @Resource
     private UserRepository userRepository;
-    @Autowired
+    @Resource
     private PostRepository postRepository;
-    @Autowired
+    @Resource
     private ResponseRepository responseRepository;
-    @Autowired
+    @Resource
     private PostResponseRepository postResponseRepository;
 
     @Override
@@ -66,12 +68,13 @@ public class CommunityServiceImpl implements CommunityService {
     }
 
     @Override
+    @Transactional
     public String addPost(int userId, String postInfo) {
         JSONObject jobj = JSON.parseObject(postInfo);
         Post post = new Post();
-        User user = userRepository.findByUserId(userId);
+        User user = userRepository.findById(userId);
         post.setTitle(jobj.get("title").toString());
-        post.setAuthor(user.getNickname());
+        post.setAuthor(user.getName());
         post.setHeat(0);
         post.setBody(jobj.get("body").toString());
         try {
@@ -83,12 +86,13 @@ public class CommunityServiceImpl implements CommunityService {
     }
 
     @Override
+    @Transactional
     public String addResponse(int userId, String responseInfo) {
-        User user = userRepository.findByUserId(userId);
+        User user = userRepository.findById(userId);
         JSONObject jobj = JSON.parseObject(responseInfo);
         Response response = new Response();
         response.setpId((int)jobj.get("pId"));
-        response.setResponder(user.getNickName());
+        response.setResponder(user.getName());
         response.setContent(jobj.get("content").toString());
         response.setLike(0);
         response.setDislike(0);
@@ -97,6 +101,7 @@ public class CommunityServiceImpl implements CommunityService {
     }
 
     @Override
+    @Transactional
     public String removePost(int postId) {
         try {
             List<PostResponse> postResponses = postResponseRepository.findAllByPostId(postId).getContent();
@@ -110,6 +115,7 @@ public class CommunityServiceImpl implements CommunityService {
     }
 
     @Override
+    @Transactional
     public String removeResponse(int resId) {
         try {
             responseRepository.deleteByResId(resId);

@@ -8,7 +8,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 public interface ResponseRepository extends JpaRepository<Response, Integer>, JpaSpecificationExecutor<Post> {
+
     Response findByResId(int resId);
+
     void deleteByResId(int resId);
+
     void deleteByPId(int pId);
 }
