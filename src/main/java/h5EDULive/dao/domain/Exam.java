@@ -89,4 +89,9 @@ public class Exam {
     public void setSubtitlePicUrl(List<String> subtitlePicUrl) {
         this.subtitlePicUrl = Serialization.obj2byte(subtitlePicUrl);
     }
+
+    public String message(){
+        return getTime()+" "+getMaxScore()+" "+getCourseId()+" "+getDuration();
+    }
+
 }
