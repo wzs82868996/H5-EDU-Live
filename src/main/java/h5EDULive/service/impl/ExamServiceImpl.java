@@ -35,14 +35,14 @@ public class ExamServiceImpl implements ExamService {
         for (UserExam ue : userExams) {
             courseId = ue.getCourseId();
             exams.add(examRepository.findByCourseId(courseId));
-            courses.add(courseRepository.findByCourseId(courseId));
+            courses.add(courseRepository.findById(courseId));
         }
         List<ExamSummary> summaries = new ArrayList<>();
         for (int i = 0; i < userExams.size(); i++)
             summaries.add(new ExamSummary(
                     exams.get(i).getCourseId(),
                     courses.get(i).getName(),
-                    courses.get(i).getPic(),
+                    courses.get(i).getDepiction(),
                     exams.get(i).getTime(),
                     exams.get(i).getMaxScore(),
                     userExams.get(i).getTotalScore()
@@ -54,7 +54,7 @@ public class ExamServiceImpl implements ExamService {
     public ExamDetail getExamDetail(int userId, int courseId) {
         Exam exam = examRepository.findByCourseId(courseId);
         UserExam userExam = userExamRepository.findByUserIdAndCourseId(userId, courseId);
-        Course course = courseRepository.findByCourseId(courseId);
+        Course course = courseRepository.findById(courseId);
         ExamDetail examDetail = new ExamDetail(
                 course.getName(),
                 course.getLabel(),
