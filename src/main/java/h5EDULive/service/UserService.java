@@ -22,6 +22,8 @@ public interface UserService {
 
     void updateProfile(int id, String profile);
 
+    void updateMail(int id, String mail);
+
     void updateLocation(int id,String location);
 
 }

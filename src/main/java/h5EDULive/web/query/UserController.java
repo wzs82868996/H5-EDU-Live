@@ -165,6 +165,15 @@ public class UserController {
         return JsonResult.strToJson(webPaths);
     }
 
+    /* 修改邮箱 */
+    @ResponseBody
+    @PostMapping("/modify/mail")
+    public JSONObject userMailModify(int id, String mail)
+    {
+        userService.updateMail(id, mail);
+        return JsonResult.strToJson("修改成功");
+    }
+
     /* 修改地址 */
     @ResponseBody
     @PostMapping("/modify/location")

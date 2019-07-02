@@ -34,6 +34,10 @@ public interface UserRepository extends JpaRepository<User, Integer>,JpaSpecific
     @Modifying
     void updateUserProfile(int id, String profile);
 
+    @Query(value = "update user set mail=?2 where id=?1",nativeQuery = true)
+    @Modifying
+    void updateUserMail(int id, String mail);
+
     @Query(value = "update user set location=?2 where id=?1",nativeQuery = true)
     @Modifying
     void updateUserLocation(int id, String location);
