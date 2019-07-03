@@ -78,6 +78,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
+    public void updateMail(int id, String mail) {
+        userRepository.updateUserMail(id, mail);
+    }
+
+    @Override
+    @Transactional
     public void updateLocation(int id, String location) {
         userRepository.updateUserLocation(id, location);
     }
