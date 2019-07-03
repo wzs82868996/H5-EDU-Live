@@ -161,7 +161,7 @@ public class UserController {
         userService.updateProfile(id, newProfileName);
 
         /* 返回url */
-        String webPaths = "http://39.106.107.209:8080/" + newProfileName;
+        String webPaths = "http://localhost:8080/" + newProfileName;
         return JsonResult.strToJson(webPaths);
     }
 

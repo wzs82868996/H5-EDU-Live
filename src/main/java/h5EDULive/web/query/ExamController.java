@@ -29,7 +29,7 @@ public class ExamController {
 
     @RequestMapping("/exam/{courseId}/submit")
     @ResponseBody
-    public List<Integer> getExamResult(@PathVariable int courseId, @RequestParam("answers") List<Integer> answers, HttpServletRequest request) {
+    public List<Integer> getExamResult(@PathVariable int courseId, @RequestParam("answers") List<Integer> answers, HttpServletRequest request) throws Exception {
         userExam = new UserExam();
         userExam.setCourseId(courseId);
         userExam.setUserId((int)request.getSession().getAttribute("userId"));
