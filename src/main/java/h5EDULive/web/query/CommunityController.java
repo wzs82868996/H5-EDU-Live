@@ -29,7 +29,7 @@
 //		return communityService.getPostsSummaries(pageable);
 //	}
 //
-//    @RequestMapping("/community/{postId}")
+//    @RequestMapping("/community/{postId}/getPost")
 //    public PostDetail getPostDetail(@PathVariable int postId, @RequestParam("page") int page) {
 //        Sort sort = new Sort(Sort.Direction.DESC, "postId");
 //		Pageable pageable = PageRequest.of(page, 15, sort);
