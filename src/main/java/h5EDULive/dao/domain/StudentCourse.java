@@ -1,5 +1,7 @@
 package h5EDULive.dao.domain;
 
+import h5EDULive.Util.Serialization;
+
 import javax.persistence.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -27,36 +29,12 @@ public class StudentCourse {
         return teacher;
     }
 
-
-
-    //将java对象序列化为byte
-    public  byte[] obj2byte(Object obj) throws Exception {
-        byte[] ret = null;
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ObjectOutputStream out = new ObjectOutputStream(baos);
-        out.writeObject(obj);
-        out.close();
-        ret = baos.toByteArray();
-        baos.close();
-        return ret;
+    public User getTeacher() {
+        return (User) Serialization.byte2obj(teacher);
     }
 
-    //将byte[]反序列化为java对象
-    public static Object byte2obj(byte[] bytes) throws Exception {
-        Object ret = null;
-        ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
-        ObjectInputStream in = new ObjectInputStream(bais);
-        ret = in.readObject();
-        in.close();
-        return ret;
-    }
-
-    public User getTeacher() throws Exception {
-        return (User)byte2obj(teacher);
-    }
-
-    public void setTeacher(User ateacher) throws Exception {
-        this.teacher=obj2byte(ateacher);
+    public void setTeacher(User ateacher) {
+        this.teacher=Serialization.obj2byte(ateacher);
     }
 
     public StudentCourse(){}
