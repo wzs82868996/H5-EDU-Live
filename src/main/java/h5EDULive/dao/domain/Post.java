@@ -1,12 +1,21 @@
 package h5EDULive.dao.domain;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "post")
 public class Post {
+    @Id
+    @Column(name = "post_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int postId;
     private String title;
     private String author;
     private int heat;
     private String body;
+    @Column(name = "pubtime")
     private String pubTime;
+    @Column(name = "latest_time")
     private String latestTime;
 
     public int getPostId() {

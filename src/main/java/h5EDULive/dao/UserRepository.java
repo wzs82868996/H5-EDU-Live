@@ -7,7 +7,13 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 public interface UserRepository extends JpaRepository<User, Integer>,JpaSpecificationExecutor<User> {
+
     User findById(int id);
+
+    User findByName(String name);
+
+    User findByIdAndPassword(int id,String password);
+
     User findByMobile(String phone);
 
     @Query(value = "update user set password=?2 where id=?1",nativeQuery = true)

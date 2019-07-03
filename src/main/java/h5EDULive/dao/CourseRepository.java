@@ -1,6 +1,9 @@
 package h5EDULive.dao;
 
 import h5EDULive.dao.domain.Course;
+import h5EDULive.dao.domain.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
@@ -25,5 +28,8 @@ public interface CourseRepository extends JpaRepository<Course, Integer>, JpaSpe
 
     @Query(value = "update course set label=?2 where id=?1",nativeQuery = true)
     void updateLabelByCourseId(int courseId,String label);
+
+    @Query(value = "select * from course where concat(name,lecture,depiction;label) regexp ?1",nativeQuery = true)
+    Page<Course> findByKeys(String s, Pageable pageable);
 
 }

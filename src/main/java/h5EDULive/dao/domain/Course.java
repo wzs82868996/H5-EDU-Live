@@ -7,21 +7,32 @@ import javax.persistence.*;
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "course_id")
+    private int courseId;
+
     private String name;
     private String label;
     private String lecture;
     private String depiction;
+
     @Column(name = "pubdate")
     private String pubDate;
     private String state;
-    private int exam;
     private String video;
+    private String pic;
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
+    }
 
     public Course(){ }
 
-    public int getId() {
-        return id;
+    public int getCourseId() {
+        return courseId;
     }
 
     public String getName() {
@@ -72,13 +83,6 @@ public class Course {
         this.state = state;
     }
 
-    public int getExam() {
-        return exam;
-    }
-
-    public void setExam(int exam) {
-        this.exam = exam;
-    }
 
     public String getVideo() {
         return video;

@@ -15,15 +15,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.*;
 
 @Service
 public class ExamServiceImpl implements ExamService {
-    @Autowired
+    @Resource
     private ExamRepository examRepository;
-    @Autowired
+    @Resource
     private CourseRepository courseRepository;
-    @Autowired
+    @Resource
     private UserExamRepository userExamRepository;
 
     @Override
@@ -55,27 +56,36 @@ public class ExamServiceImpl implements ExamService {
         Exam exam = examRepository.findByCourseId(courseId);
         UserExam userExam = userExamRepository.findByUserIdAndCourseId(userId, courseId);
         Course course = courseRepository.findById(courseId);
-        ExamDetail examDetail = new ExamDetail(
-                course.getName(),
-                course.getLabel(),
-                course.getLecture(),
-                exam.getTime(),
-                exam.getDuration(),
-                exam.getMaxScore(),
-                exam.getSubtitlePicUrl(),
-                exam.getSubtitleScore(),
-                exam.getSolutions(),
-                userExam.getAnswers(),
-                userExam.getSubScore(),
-                userExam.getTotalScore()
-        );
+        ExamDetail examDetail = null;
+        try {
+            examDetail = new ExamDetail(
+                    course.getName(),
+                    course.getLabel(),
+                    course.getLecture(),
+                    exam.getTime(),
+                    exam.getDuration(),
+                    exam.getMaxScore(),
+                    exam.getSubtitlePicUrl(),
+                    exam.getSubtitleScore(),
+                    exam.getSolutions(),
+                    userExam.getAnswers(),
+                    userExam.getSubScore(),
+                    userExam.getTotalScore()
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return examDetail;
     }
 
     @Override
+    @Transactional
     public List<Integer> getExamResult(UserExam userExam) {
         Exam exam = examRepository.findByCourseId(userExam.getCourseId());
-        List<Integer> answers = userExam.getAnswers();
+        List<Integer> answers = null;
+        try {
+            answers = userExam.getAnswers();
+
         List<Integer> solutions = exam.getSolutions();
         List<Integer> subtitleScore = exam.getSubtitleScore();
         List<Integer> subScore = userExam.getSubScore();
@@ -94,6 +104,10 @@ public class ExamServiceImpl implements ExamService {
         userExam.setTotalScore(totalScore);
         userExamRepository.saveAndFlush(userExam);
         return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
@@ -116,6 +130,7 @@ public class ExamServiceImpl implements ExamService {
     }
 
     @Override
+    @Transactional
     public String removeExam(int courseId) {
         try {
             examRepository.deleteByCourseId(courseId);
