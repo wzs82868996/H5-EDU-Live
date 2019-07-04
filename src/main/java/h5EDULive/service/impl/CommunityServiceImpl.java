@@ -14,7 +14,9 @@ import h5EDULive.service.CommunityService;
 import h5EDULive.web.dto.PostDetail;
 import h5EDULive.web.dto.PostSummary;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -104,7 +106,11 @@ public class CommunityServiceImpl implements CommunityService {
     @Transactional
     public String removePost(int postId) {
         try {
-            List<PostResponse> postResponses = postResponseRepository.findAllByPostId(postId).getContent();
+            int page=0,size=10;
+            Sort sort = new Sort(Sort.Direction.DESC, "id");
+            Pageable pageable = PageRequest.of(page, size, sort);
+
+            List<PostResponse> postResponses = postResponseRepository.findAllByPostId(postId,pageable).getContent();
             for (PostResponse postResponse : postResponses)
                 removeResponse(postResponse.getResId());
             postRepository.deleteByPostId(postId);

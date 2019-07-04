@@ -1,4 +1,4 @@
-package com.h5_sdu_live.demo.config;
+package h5EDULive.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
