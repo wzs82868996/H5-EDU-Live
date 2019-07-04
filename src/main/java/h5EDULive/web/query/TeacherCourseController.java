@@ -51,7 +51,7 @@ public class TeacherCourseController {
 
     @RequestMapping("/upload")
     @ResponseBody
-    public JSONObject uploadVideo(MultipartFile file) throws IllegalStateException, IOException {
+    public JSONObject uploadVideo(MultipartFile file) {
         if (file.isEmpty()) {
             return JsonResult.strToJson("上传失败") ;
         }
@@ -61,7 +61,12 @@ public class TeacherCourseController {
 
         String savePaths = "/users/videos";
         File fileSave = new File(savePaths, newVideoName);
-        file.transferTo(fileSave);
+        try {
+            file.transferTo(fileSave);
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+            return null;
+        }
 
         /* 存储视频url */
         teacherCourseService.upload();

@@ -35,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .and().sessionManagement().maximumSessions(2).expiredUrl("/login?expired");
 
     @Override
-    public void configure(WebSecurity web) throws Exception {
+    public void configure(WebSecurity web) throws Exception{
         web.ignoring().antMatchers("/css/**", "/img/**", "/plugins/**");
     }
 
