@@ -12,6 +12,9 @@ import h5EDULive.web.dto.ExamDetail;
 import h5EDULive.web.dto.ExamSummary;
 import h5EDULive.dao.domain.UserExam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,7 +32,11 @@ public class ExamServiceImpl implements ExamService {
 
     @Override
     public List<ExamSummary> getExamSummaries(int userId) {
-        List<UserExam> userExams = userExamRepository.findByUserId(userId).getContent();
+        int page=0,size=10;
+        Sort sort = new Sort(Sort.Direction.DESC, "id");
+        Pageable pageable = PageRequest.of(page, size, sort);
+
+        List<UserExam> userExams = userExamRepository.findByUserId(userId,pageable).getContent();
         List<Exam> exams = new ArrayList<>();
         List<Course> courses = new ArrayList<>();
         int courseId;
