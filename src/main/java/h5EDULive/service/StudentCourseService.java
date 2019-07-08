@@ -1,10 +1,12 @@
 package h5EDULive.service;
 
+import com.h5_sdu_live.demo.domain.Course;
+
 import java.util.List;
 
 public interface StudentCourseService {
 
-    List<String> getList(int id);
+    List<Course> getList(int id);
 
     boolean insert(int stuId, int courseId);
 

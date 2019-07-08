@@ -5,7 +5,9 @@ import h5EDULive.dao.domain.User;
 import h5EDULive.service.UserService;
 import h5EDULive.web.dto.JsonResult;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -27,36 +29,45 @@ public class UserController {
 
     /* 页面 */
     /* 首页 */
-    @GetMapping("/")
+    @RequestMapping("/index")
     public String index() {
         return "index";
     }
 
     /* 登录 */
-    @GetMapping("/login")
+    @RequestMapping("/login")
     public String login(){
         return "login";
     }
 
     /* 登录失败 */
-    @RequestMapping("/login-error")
-    public String userLoginFail(){
-        return "loginFail";
+    @RequestMapping("/loginError")
+    public String loginFail(){
+        return "loginError";
     }
 
-    /* 注册 */
-    @GetMapping("/register")
-    public String register(){
-        return "register";
+    @RequestMapping("/session_expired")
+    public String sessionExpired()
+    {
+        return "sessionExpired";
     }
 
-    /* 修改个人信息 */
-    @GetMapping("/modify")
-    public String modify(){
-        return "modify";
+    @RequestMapping("/other")
+    public String other()
+    {
+        return "other";
     }
-
-
+//    /* 注册 */
+//    @GetMapping("/register")
+//    public String register(){
+//        return "register";
+//    }
+//
+//    /* 修改个人信息 */
+//    @GetMapping("/modify")
+//    public String modify(){
+//        return "modify";
+//    }
 
     /* 功能 */
     /* 注册验证 */
@@ -82,6 +93,13 @@ public class UserController {
         }else{
             return JsonResult.strToJson("注册失败");
         }
+    }
+
+    /* 查看用户信息 */
+    @ResponseBody
+    @PostMapping("/getInfo")
+    public JSONObject getInfo(int id){
+       return JsonResult.objToJson(userService.getInfo(id));
     }
 
     /* 修改密码验证 */
@@ -144,6 +162,7 @@ public class UserController {
     }
 
     /* 修改头像 */
+    @ResponseBody
     @PostMapping("/modify/profile")
     public JSONObject userProfileModify(int id, MultipartFile file) {
         /* 上传头像 */
@@ -153,20 +172,19 @@ public class UserController {
         String fileExt = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1).toLowerCase();
         String pikId = UUID.randomUUID().toString().replaceAll("-", "");
         String newProfileName = pikId + "." + fileExt;
-        String savePaths = "/users/temp";
+        //上传到哪，跟的是DemoApplication的地址
+        String savePaths = "/static/imgs/users/profiles";
         File fileSave = new File(savePaths, newProfileName);
+        String webPaths = "http://localhost:8080/stat/imgs/users/profiles/" + newProfileName;
         try {
             file.transferTo(fileSave);
         } catch (IOException ioe) {
             ioe.printStackTrace();
             return null;
         }
-
         /* 存储头像url */
-        userService.updateProfile(id, newProfileName);
-
+        userService.updateProfile(id, webPaths);
         /* 返回url */
-        String webPaths = "http://localhost:8080/" + newProfileName;
         return JsonResult.strToJson(webPaths);
     }
 
@@ -187,6 +205,17 @@ public class UserController {
         userService.updateLocation(id, location);
         return JsonResult.strToJson("修改成功");
     }
+
+    /* 修改邮箱 */
+    @ResponseBody
+    @PostMapping("/modify/description")
+    public JSONObject userDescriptionModify(int id, String description)
+    {
+        userService.updateDescription(id, description);
+        return JsonResult.strToJson("修改成功");
+    }
+
+
 
 
 }

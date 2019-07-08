@@ -1,9 +1,11 @@
 package h5EDULive.service;
 
+import h5EDULive.dao.domain.Course;
+
 import java.util.List;
 
 public interface TeacherCourseService {
-    List<String> getList(int id);
+    List<Course> getList(int id);
 
     boolean insert(int tchId, int courseId);
 
