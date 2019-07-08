@@ -41,11 +41,7 @@ public class ExamController {
 
     @RequestMapping("/homepage-exam/exam/submit")
     @ResponseBody
-<<<<<<< HEAD
-    public List<Integer> getExamResult(@PathVariable int courseId, @RequestParam("answers") List<Integer> answers, HttpServletRequest request) throws Exception {
-=======
     public List<Integer> getExamResult(@RequestParam int courseId, @RequestParam("answers[]") List<Integer> answers, HttpServletRequest request) {
->>>>>>> 4f97aca82a6a38af1c1af482d678d0449af70477
         userExam = new UserExam();
         userExam.setCourseId(courseId);
         userExam.setUserId((int)request.getSession().getAttribute("userId"));

@@ -57,11 +57,7 @@ public class TeacherCourseController {
 
     @RequestMapping("/upload")
     @ResponseBody
-<<<<<<< HEAD
     public JSONObject uploadVideo(MultipartFile file, Course course) throws IllegalStateException, IOException {
-=======
-    public JSONObject uploadVideo(MultipartFile file) {
->>>>>>> 4f97aca82a6a38af1c1af482d678d0449af70477
         if (file.isEmpty()) {
             return JsonResult.strToJson("上传失败，未选择视频") ;
         }
