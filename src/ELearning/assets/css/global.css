@@ -42,7 +42,7 @@
     float: right;
     border: none;
     outline: none;
-    background: url("../images/communityimg/indexSearch.png") no-repeat 0 0;
+    background: url("../images/communityImage/indexSearch.png") no-repeat 0 0;
     background-size: 14px 14px;
     margin-right: 15px;
     margin-top: 8px;
@@ -322,7 +322,7 @@
     width: 100%;
     height: 41px;
     border-bottom: 1px solid #eee;
-    background: url("../images/communityimg/meIcon.png") no-repeat right center;
+    background: url("../images/communityImage/meIcon.png") no-repeat right center;
     background-size: 6px 11px;
 }
 .meContent li:last-of-type{
@@ -583,7 +583,7 @@
     float: right;
     border: none;
     outline: none;
-    background: url("../images/communityimg/ltSub.png") no-repeat 0 0;
+    background: url("../images/communityImage/ltSub.png") no-repeat 0 0;
     background-size: 20px 20px;
     margin-top: 21px;
 }
