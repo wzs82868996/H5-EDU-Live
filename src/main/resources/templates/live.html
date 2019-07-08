@@ -6,16 +6,22 @@
     <title>ELearning在线测评与学习平台</title>
     <link rel="stylesheet" href="assets/css/course.css"/>
     <link rel="stylesheet" href="assets/css/tab.css" media="screen">
+    <script type="text/javascript" src="assets/js/jquery-3.4.1.js"></script>
+    <script type="text/javaScript">
+        function insertStreamName() {
+            $.ajax({
+                url: "/getStreamName",
+                data: $("#stream").text(),
+                contentType: "text/plain",
+                dataType: "text"
+            });
+        }
+    </script>
 
     <!-- InstanceEndEditable -->
     <!-- InstanceBeginEditable name="head" -->
     <!-- InstanceEndEditable -->
-<script language="JavaScript">
-    function insertStreamName() {
-        var stream=document.getElementById("stream").value;
-        alert(stream);
-    }
-</script>
+
 </head>
 
 <body>
@@ -50,18 +56,21 @@
 </div>
 <!-- InstanceBeginEditable name="EditRegion1" -->
 
-<iframe id="live" src="http://39.106.107.209:5080/demos/publisher.html" scrolling="no" style="width: 80%; height: 650px"></iframe>
-<div style="position: relative; width: 10%; top: -650px; left: 83%;">
+<div style="width: 80%; height: 650px">
+<div style="float: left; width: 80%; height: 630px">
+	<iframe id="live" src="http://39.106.107.209:5080/demos/publisher.html" scrolling="no" style="margin-left: 0; padding-left: 0; width: 100%; height: 100%"></iframe>
+</div>
+<div style="float: right; width: 15%; height:650px">
     1.在左侧偏下Settings中，点击Server标签，修改Location为rtmp://39.106.107.209/oflaDemo，随后点击Connect；
     2.点击Video标签，在Device中选择摄像头，点击Start；<br/>
     3.点击Audio标签，在Device中选择麦克风，点击Start；<br/>
     4.在偏上Monitor中，点击右下角的Publish；<br/>
     5.将Name中的streamxxx复制到本说明下方的输入框中，点击提交。<br/>
     <input id="stream" type="text">
-    <button onclick="insertStreamName()">input</button>
-
-
+    <button onclick="insertStreamName()">提交</button>
 </div>
+</div>
+
 <div class="foot">
     <div class="fcontainer">
         <!--<div class="fwxwb">
