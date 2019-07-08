@@ -1,6 +1,7 @@
 package h5EDULive.service;
 
-import com.h5_sdu_live.demo.domain.Course;
+
+import h5EDULive.dao.domain.Course;
 
 import java.util.List;
 

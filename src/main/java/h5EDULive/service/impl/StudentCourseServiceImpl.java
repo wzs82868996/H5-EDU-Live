@@ -1,10 +1,10 @@
 package h5EDULive.service.impl;
 
-import com.h5_sdu_live.demo.domain.Course;
-import com.h5_sdu_live.demo.domain.StuCourseMapper;
-import com.h5_sdu_live.demo.repository.CourseRepository;
-import com.h5_sdu_live.demo.repository.StuCourseRepository;
-import com.h5_sdu_live.demo.service.StuCourseService;
+import h5EDULive.dao.CourseRepository;
+import h5EDULive.dao.StudentCourseRepository;
+import h5EDULive.dao.domain.Course;
+import h5EDULive.dao.domain.StudentCourse;
+import h5EDULive.service.StudentCourseService;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class StudentCourseServiceImpl implements StuCourseService {
-    private final StuCourseRepository stuCourseRepository;
+public class StudentCourseServiceImpl implements StudentCourseService {
+    private final StudentCourseRepository stuCourseRepository;
     private final CourseRepository courseRepository;
 
-    public StudentCourseServiceImpl(StuCourseRepository stuCourseRepository, CourseRepository courseRepository) {
+    public StudentCourseServiceImpl(StudentCourseRepository stuCourseRepository, CourseRepository courseRepository) {
         this.stuCourseRepository = stuCourseRepository;
         this.courseRepository = courseRepository;
     }
@@ -24,10 +24,10 @@ public class StudentCourseServiceImpl implements StuCourseService {
     /* 根据学生id查找课程名称列表 */
     public List<Course> getList(int id)
     {
-        List<StuCourseMapper> courseId = stuCourseRepository.findByStuId(id);
+        List<StudentCourse> courseId = stuCourseRepository.findByStuId(id);
         List<Course> cources = new ArrayList<>();
-        for (StuCourseMapper stuCourseMapper : courseId) {
-            cources.add(courseRepository.findById(stuCourseMapper.getCourseId()));
+        for (StudentCourse studentCourse : courseId) {
+            cources.add(courseRepository.findById(studentCourse.getCourseId()));
         }
         return cources;
     }
@@ -36,7 +36,7 @@ public class StudentCourseServiceImpl implements StuCourseService {
     @Override
     public boolean insert(int stuId, int courseId)
     {
-        StuCourseMapper stuCourseMapper = new StuCourseMapper();
+        StudentCourse stuCourseMapper = new StudentCourse();
         stuCourseMapper.setStuId(stuId);
         stuCourseMapper.setCourseId(courseId);
         return stuCourseRepository.save(stuCourseMapper) != null;
