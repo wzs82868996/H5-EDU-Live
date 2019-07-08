@@ -57,7 +57,7 @@ public class ExamController {
 
     @RequestMapping("/homepage-exam/delete")
     @ResponseBody
-    public String addExam(@RequestParam("courseId") int courseId) {
+    public String removeExam(@RequestParam("courseId") int courseId) {
         return examService.removeExam(courseId);
     }
 }
