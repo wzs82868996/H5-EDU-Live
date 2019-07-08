@@ -1,4 +1,4 @@
-package com.h5_sdu_live.demo.config;
+package h5EDULive.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -35,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .and().sessionManagement().maximumSessions(2).expiredUrl("/login?expired");
 
     @Override
-    public void configure(WebSecurity web) throws Exception {
+    public void configure(WebSecurity web) throws Exception{
         web.ignoring().antMatchers("/css/**", "/img/**", "/plugins/**");
     }
 

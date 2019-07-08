@@ -145,7 +145,7 @@ public class UserController {
 
     /* 修改头像 */
     @PostMapping("/modify/profile")
-    public JSONObject userProfileModify(int id, MultipartFile file) throws IOException {
+    public JSONObject userProfileModify(int id, MultipartFile file) {
         /* 上传头像 */
         if (file.isEmpty()) {
             return JsonResult.strToJson("上传失败，未选择文件") ;
@@ -155,13 +155,18 @@ public class UserController {
         String newProfileName = pikId + "." + fileExt;
         String savePaths = "/users/temp";
         File fileSave = new File(savePaths, newProfileName);
-        file.transferTo(fileSave);
+        try {
+            file.transferTo(fileSave);
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+            return null;
+        }
 
         /* 存储头像url */
         userService.updateProfile(id, newProfileName);
 
         /* 返回url */
-        String webPaths = "http://39.106.107.209:8080/" + newProfileName;
+        String webPaths = "http://localhost:8080/" + newProfileName;
         return JsonResult.strToJson(webPaths);
     }
 
