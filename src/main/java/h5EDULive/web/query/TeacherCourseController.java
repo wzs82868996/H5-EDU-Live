@@ -1,6 +1,9 @@
 package h5EDULive.web.query;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import h5EDULive.dao.domain.Course;
+import h5EDULive.service.CourseService;
 import h5EDULive.service.TeacherCourseService;
 import h5EDULive.web.dto.JsonResult;
 import org.springframework.stereotype.Controller;
@@ -10,28 +13,31 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 import java.util.UUID;
 
 @Controller
 public class TeacherCourseController {
 
     private final TeacherCourseService teacherCourseService;
+    private final CourseService courseService;
 
-    public TeacherCourseController(TeacherCourseService teacherCourseService) {
+    public TeacherCourseController(TeacherCourseService teacherCourseService, CourseService courseService) {
         this.teacherCourseService = teacherCourseService;
+        this.courseService = courseService;
     }
 
     @ResponseBody
     @RequestMapping("/teacher/list")
-    public List<String> getList(int id){
-        return teacherCourseService.getList(id);
+    public JSONArray getList(int id){
+        return JsonResult.listToJson(teacherCourseService.getList(id));
+
     }
 
     @ResponseBody
     @RequestMapping("/teacher/add")
-    public boolean add(int tchId, int courseId){
-        return teacherCourseService.insert(tchId, courseId);
+    public JSONObject add(int tchId, int courseId){
+        teacherCourseService.insert(tchId, courseId);
+        return JsonResult.strToJson("添加成功");
     }
 
     @ResponseBody
@@ -51,23 +57,25 @@ public class TeacherCourseController {
 
     @RequestMapping("/upload")
     @ResponseBody
-    public JSONObject uploadVideo(MultipartFile file) throws IllegalStateException, IOException {
+    public JSONObject uploadVideo(MultipartFile file, Course course) throws IllegalStateException, IOException {
         if (file.isEmpty()) {
-            return JsonResult.strToJson("上传失败") ;
+            return JsonResult.strToJson("上传失败，未选择视频") ;
         }
         String fileExt = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1).toLowerCase();
         String pikId = UUID.randomUUID().toString().replaceAll("-", "");
         String newVideoName = pikId + "." + fileExt;
 
-        String savePaths = "/users/videos";
+        String savePaths = "/static/videos";
         File fileSave = new File(savePaths, newVideoName);
         file.transferTo(fileSave);
 
+        String webPaths = "http://localhost:8080/stat/videos/" + newVideoName;
+
+        course.setVideo(webPaths);
         /* 存储视频url */
-        teacherCourseService.upload();
+        courseService.insert(course);
 
         /* 返回url */
-        String webPaths = "http://39.106.107.209:8080/" + newVideoName;
         return JsonResult.strToJson(webPaths);
     }
 

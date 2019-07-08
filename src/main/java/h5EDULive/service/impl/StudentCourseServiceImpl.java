@@ -1,57 +1,53 @@
 package h5EDULive.service.impl;
 
-import h5EDULive.dao.CourseRepository;
-import h5EDULive.dao.StudentCourseRepository;
-import h5EDULive.dao.domain.StudentCourse;
-import h5EDULive.service.StudentCourseService;
+import com.h5_sdu_live.demo.domain.Course;
+import com.h5_sdu_live.demo.domain.StuCourseMapper;
+import com.h5_sdu_live.demo.repository.CourseRepository;
+import com.h5_sdu_live.demo.repository.StuCourseRepository;
+import com.h5_sdu_live.demo.service.StuCourseService;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class StudentCourseServiceImpl implements StudentCourseService {
-    @Resource
-    private StudentCourseRepository stuCourseRepository;
+public class StudentCourseServiceImpl implements StuCourseService {
+    private final StuCourseRepository stuCourseRepository;
+    private final CourseRepository courseRepository;
 
-    @Resource
-    private CourseRepository courseRepository;
-
-    public StudentCourseServiceImpl(StudentCourseRepository stuCourseRepository, CourseRepository courseRepository) {
+    public StudentCourseServiceImpl(StuCourseRepository stuCourseRepository, CourseRepository courseRepository) {
         this.stuCourseRepository = stuCourseRepository;
         this.courseRepository = courseRepository;
     }
 
     /* 根据学生id查找课程名称列表 */
-    public List<String> getList(int id)
+    public List<Course> getList(int id)
     {
-        List<StudentCourse> courseId = stuCourseRepository.findByStuId(id);
-        List<String> courses = new ArrayList<>();
-        for (StudentCourse StudentCourse : courseId) {
-            courses.add(courseRepository.findById(StudentCourse.getCourseId()).getName());
+        List<StuCourseMapper> courseId = stuCourseRepository.findByStuId(id);
+        List<Course> cources = new ArrayList<>();
+        for (StuCourseMapper stuCourseMapper : courseId) {
+            cources.add(courseRepository.findById(stuCourseMapper.getCourseId()));
         }
-        return courses;
+        return cources;
     }
 
     /* 把课程添加到我的课程里 */
     @Override
-    @Transactional
     public boolean insert(int stuId, int courseId)
     {
-        StudentCourse StudentCourse = new StudentCourse();
-        StudentCourse.setStuId(stuId);
-        StudentCourse.setCourseId(courseId);
-        return stuCourseRepository.save(StudentCourse) != null;
+        StuCourseMapper stuCourseMapper = new StuCourseMapper();
+        stuCourseMapper.setStuId(stuId);
+        stuCourseMapper.setCourseId(courseId);
+        return stuCourseRepository.save(stuCourseMapper) != null;
     }
 
     /* 把课程从我的课程里删除 */
-    @Override
     @Transactional
+    @Override
     public void remove(int stuId, int courseId)
     {
-        stuCourseRepository.deleteByCourseIdAndStuId(stuId, courseId);
+        stuCourseRepository.deleteByCourseIdAndStuId(courseId, stuId);
     }
 
     /* 根据课程id查找课程信息 */

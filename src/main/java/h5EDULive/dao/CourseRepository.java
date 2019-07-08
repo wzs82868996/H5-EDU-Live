@@ -1,11 +1,9 @@
 package h5EDULive.dao;
 
 import h5EDULive.dao.domain.Course;
-import h5EDULive.dao.domain.User;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
@@ -21,15 +19,16 @@ public interface CourseRepository extends JpaRepository<Course, Integer>, JpaSpe
     void deleteById(int id);
 
     @Query(value = "update course set name=?2 where id=?1",nativeQuery = true)
-    void updateNameByCourseId(int courseId,String name);
+    void updateNameByCourseId(int courseId, String name);
 
-    @Query(value = "update course set depiction=?2 where id=?1",nativeQuery = true)
-    void updateDepicitionByCourseId(int courseId,String depiction);
+    @Query(value = "update course set depiction=?2 where course_id=?1",nativeQuery = true)
+    @Modifying
+    void updateDepictionByCourseId(int courseId, String depiction);
 
     @Query(value = "update course set label=?2 where id=?1",nativeQuery = true)
-    void updateLabelByCourseId(int courseId,String label);
+    void updateLabelByCourseId(int courseId, String label);
 
-    @Query(value = "select * from course where concat(name,lecture,depiction;label) regexp ?1",nativeQuery = true)
-    Page<Course> findByKeys(String s, Pageable pageable);
+    @Query(value = "select * from course where course_id in (select course_id from teacher_course where teacher_id=?1)",nativeQuery = true)
+    List<Course> getList(int id);
 
 }
