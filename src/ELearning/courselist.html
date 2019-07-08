@@ -16,7 +16,6 @@
 </head>
 
 <body>
-
 <div class="head" id="fixed">
 	<div class="nav">
     	<span class="navimg"><a href="index.html"><img border="0" src="assets/images/logo/logo.png"></a></span>
@@ -81,110 +80,11 @@
     <div style="height:20px;border-radius:0 0 5px 5px; background:#fff;box-shadow:0 2px 4px rgba(0, 0, 0, 0.1)"></div>
     </div>
     <div class="courseright">
-        <div class="clearh"></div>
-      <ul class="courseulr">
-        <li>
-        	<div class="courselist">
-            <a href="coursecont.html" target="_blank"><img style="border-radius:3px 3px 0 0;" width="240" src="assets/images/course/c1.jpg" title="会计基础"></a>
-            <p class="courTit"><a href="coursecont.html" target="_blank">会计基础</a></p>
-            <div class="gray">
-            <span>30课时 600分钟</span>
-            <span class="sp1">1255555人学习</span>
-            <div style="clear:both"></div>
-            </div>
-            </div>
-       </li>
-        <li>
-        	<div class="courselist">
-            <a href="coursecont.html" target="_blank"><img style="border-radius:3px 3px 0 0;" width="240" src="assets/images/course/c2.jpg" title="会计基础"></a>
-            <p class="courTit"><a href="coursecont.html" target="_blank">HTTP下载课程</a></p>
-            <div class="gray">
-            <span>5课时 60分钟</span>
-            <span class="sp1">1255555人学习</span>
-            <div style="clear:both"></div>
-            </div>
-            </div>
-        </li>
-        <li>
-        	<div class="courselist">
-            <a href="coursecont.html" target="_blank"><img style="border-radius:3px 3px 0 0;" width="240" src="assets/images/course/c3.jpg" title="会计基础"></a>
-            <p class="courTit"><a href="coursecont.html" target="_blank">HTTP下载课程</a></p>
-            <div class="gray">
-            <span>5课时 60分钟</span>
-            <span class="sp1">1255555人学习</span>
-            <div style="clear:both"></div>
-            </div>
-            </div>
-       </li>
-       <li>
-        	<div class="courselist">
-            <img style="border-radius:3px 3px 0 0;" width="240" src="assets/images/course/c4.jpg" >
-            <p class="courTit">HTTP下载课程</p>
-            <div class="gray">
-            <span>5课时 60分钟</span>
-            <span class="sp1">1255555人学习</span>
-            <div style="clear:both"></div>
-            </div>
-            </div>
-       </li>
-       <li>
-        	<div class="courselist">
-            <img style="border-radius:3px 3px 0 0;" width="240" src="assets/images/course/c5.jpg" >
-            <p class="courTit">HTTP下载课程</p>
-            <div class="gray">
-            <span>5课时 60分钟</span>
-            <span class="sp1">1255555人学习</span>
-            <div style="clear:both"></div>
-            </div>
-            </div>
-       </li>
-       <li>
-        	<div class="courselist">
-            <img style="border-radius:3px 3px 0 0;" width="240" src="assets/images/course/c6.jpg" >
-            <p class="courTit">HTTP下载课程</p>
-            <div class="gray">
-            <span>5课时 60分钟</span>
-            <span class="sp1">1255555人学习</span>
-            <div style="clear:both"></div>
-            </div>
-            </div>
-       </li>
-       <li>
-        	<div class="courselist">
-            <img style="border-radius:3px 3px 0 0;" width="240" src="assets/images/course/c7.jpg" >
-            <p class="courTit">HTTP下载课程</p>
-            <div class="gray">
-            <span>5课时 60分钟</span>
-            <span class="sp1">1255555人学习</span>
-            <div style="clear:both"></div>
-            </div>
-            </div>
-       </li>
-       <li>
-        	<div class="courselist">
-            <img style="border-radius:3px 3px 0 0;" width="240" src="assets/images/course/c8.jpg" >
-            <p class="courTit">HTTP下载课程</p>
-            <div class="gray">
-            <span>5课时 60分钟</span>
-            <span class="sp1">1255555人学习</span>
-            <div style="clear:both"></div>
-            </div>
-            </div>
-       </li>
-       <li>
-        	<div class="courselist">
-            <img style="border-radius:3px 3px 0 0;" width="240" src="assets/images/course/c9.jpg" >
-            <p class="courTit">HTTP下载课程</p>
-            <div class="gray">
-            <span>5课时 60分钟</span>
-            <span class="sp1">1255555人学习</span>
-            <div style="clear:both"></div>
-            </div>
-            </div>
-       </li>
-    </ul>
+        <ul id="courseulr">
+
+
+        </ul>
     </div>
-    <div class="clearh"></div>
 </div>
 </div>
 <!-- InstanceEndEditable -->
@@ -205,7 +105,7 @@
 	     <p><a href="#">关于我们</a> | <a href="#">联系我们</a> | <a href="#">优秀讲师</a> | <a href="#">帮助中心</a> | <a href="#">意见反馈</a> | <a href="#">加入我们</a></p>
       </div>
       <div class="copyright">      
-        <div><a href="/">E-learning</a>所有&nbsp;晋ICP备12006957号-9</div>
+        <div><a href="/">E-learning</a>所有&nbsp;鲁888888888</div>
       </div>
     </div>
 </div>
@@ -224,6 +124,57 @@
 	</span>	
 	<span class="barico top" id="top">置顶</span>	
 </div>
+
+<script>
+       $.ajax({
+                url: "/test",
+                type: "post",
+                data: "",
+                dataType: "json",
+                contentType: "application/json",
+                success: function (courseList) {
+                    var coursesUl = $("#courseulr");
+                     for (var course in courseList)
+                    coursesUl.append("<li><div class='courselist'>" +
+                        "<img src='" + course.coursePic + "' title='" + course.pageview + "'/>" +
+                        "<p class='courTit'><a href='/courselist/course?=" + course.courseId + "'>" + course.name + "</a></p>" +
+                        "<div class='gray'>" +
+                        "<span> " + course.length + "</span>" +
+                        "</div>" +
+                        "<p class='sp1'><a href='/teacher/teacher?=" + course.teacherId + "'>讲师:" + course.lecture + "</a></p></div></li>");
+
+                },
+                error: function (XMLHttpRequest, courseStatus) {
+                    console.log(XMLHttpRequest.status);
+                    console.log(XMLHttpRequest.readyState);
+                    console.log(textStatus);
+
+                }
+
+            }
+        );
+    //var coursesUl = $("#courseulr");
+    // for (var course in courseList)
+    /* var course={};
+     course.name ="学习";
+     course.length="10min";
+     course.lecture="隋欣";
+     course.pageview="dididdadada";
+     course.courseId=123;
+     course.coursePic="assets/images/course/c3.jpg";
+     $("#courseulr").append("<li><div class='courselist'>" +
+         "<img src='" + course.coursePic + "' title='" + course.pageview +"'/>" +
+         "<p class='courTit'><a href='/courselist/course?=" + course.courseId + "'>" + course.name + "</a></p>" +
+         "<div class='gray'>" +
+         "<span> "+ course.length+ "</span>"+
+         // "<span class='sp1'>"+ course.peoplenumber+"</span>"
+         "</div>"+
+         "<p class='sp1'><a href='/teacher/teacher?=" + course.teacherId + "'>讲师:" + course.lecture + "</a></p></div></li>");
+     //+
+     //"<p>" + course.pageview + "</p></a></div></li>"));*/
+
+</script>
+
 </body>
 
 <!-- InstanceEnd --></html>

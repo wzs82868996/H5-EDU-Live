@@ -164,7 +164,7 @@ public class UserController {
     /* 修改头像 */
     @ResponseBody
     @PostMapping("/modify/profile")
-    public JSONObject userProfileModify(int id, MultipartFile file) throws IOException {
+    public JSONObject userProfileModify(int id, MultipartFile file) {
         /* 上传头像 */
         if (file.isEmpty()) {
             return JsonResult.strToJson("上传失败，未选择文件") ;
@@ -175,11 +175,25 @@ public class UserController {
         //上传到哪，跟的是DemoApplication的地址
         String savePaths = "/static/imgs/users/profiles";
         File fileSave = new File(savePaths, newProfileName);
+<<<<<<< HEAD
         file.transferTo(fileSave);
         String webPaths = "http://localhost:8080/stat/imgs/users/profiles/" + newProfileName;
+=======
+        try {
+            file.transferTo(fileSave);
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+            return null;
+        }
+
+>>>>>>> 4f97aca82a6a38af1c1af482d678d0449af70477
         /* 存储头像url */
         userService.updateProfile(id, webPaths);
         /* 返回url */
+<<<<<<< HEAD
+=======
+        String webPaths = "http://localhost:8080/" + newProfileName;
+>>>>>>> 4f97aca82a6a38af1c1af482d678d0449af70477
         return JsonResult.strToJson(webPaths);
     }
 

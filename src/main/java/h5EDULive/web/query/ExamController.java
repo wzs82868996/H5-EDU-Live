@@ -17,19 +17,35 @@ public class ExamController {
     private ExamServiceImpl examService;
     private UserExam userExam;
 
-    @RequestMapping("/homepage-exam/summaries")
-    public List<ExamSummary> getExamSummaries(HttpServletRequest request) {
-        return examService.getExamSummaries((int)request.getSession().getAttribute("userId"));
+    @RequestMapping("/homepage-exam")
+    public String exams(){
+        return "homepage-exam";
     }
 
-    @RequestMapping("/exam/{courseId}")
-    public ExamDetail getExamDetail(@PathVariable int courseId, HttpServletRequest request) {
+    @RequestMapping("/homepage-exam/summaries")
+    @ResponseBody
+    public List<ExamSummary> getExamSummaries(HttpServletRequest request) {
+            return examService.getExamSummaries((int)request.getSession().getAttribute("userId"));
+    }
+
+    @RequestMapping("/homepage-exam/exam")
+    public String exam(){
+        return "exam";
+    }
+
+    @RequestMapping("/homepage-exam/exam/detail")
+    @ResponseBody
+    public ExamDetail getExamDetail(@RequestParam int courseId, HttpServletRequest request) {
         return examService.getExamDetail((int)request.getSession().getAttribute("userId"), courseId);
     }
 
-    @RequestMapping("/exam/{courseId}/submit")
+    @RequestMapping("/homepage-exam/exam/submit")
     @ResponseBody
+<<<<<<< HEAD
     public List<Integer> getExamResult(@PathVariable int courseId, @RequestParam("answers") List<Integer> answers, HttpServletRequest request) throws Exception {
+=======
+    public List<Integer> getExamResult(@RequestParam int courseId, @RequestParam("answers[]") List<Integer> answers, HttpServletRequest request) {
+>>>>>>> 4f97aca82a6a38af1c1af482d678d0449af70477
         userExam = new UserExam();
         userExam.setCourseId(courseId);
         userExam.setUserId((int)request.getSession().getAttribute("userId"));
@@ -38,12 +54,14 @@ public class ExamController {
     }
 
     @RequestMapping("/homepage-exam/add")
+    @ResponseBody
     public String addExam(@RequestBody String examInfo) {
         return examService.addExam(examInfo);
     }
 
     @RequestMapping("/homepage-exam/delete")
-    public String addExam(@RequestParam("courseId") int courseId) {
+    @ResponseBody
+    public String removeExam(@RequestParam("courseId") int courseId) {
         return examService.removeExam(courseId);
     }
 }

@@ -2,7 +2,10 @@ package h5EDULive.dao.domain;
 
 
 import javax.persistence.*;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4f97aca82a6a38af1c1af482d678d0449af70477
 @Entity
 @Table(name ="user")
 public class User {

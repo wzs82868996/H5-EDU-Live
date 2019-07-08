@@ -3,10 +3,6 @@ package h5EDULive.dao.domain;
 import h5EDULive.Util.Serialization;
 
 import javax.persistence.Entity;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.List;
 
 import javax.persistence.*;
@@ -50,28 +46,6 @@ public class UserExam {
     @Column(name = "total_score")
     private int totalScore;
 
-    //将java对象序列化为byte
-    public  byte[] obj2byte(Object obj) throws Exception {
-        byte[] ret = null;
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ObjectOutputStream out = new ObjectOutputStream(baos);
-        out.writeObject(obj);
-        out.close();
-        ret = baos.toByteArray();
-        baos.close();
-        return ret;
-    }
-
-    //将byte[]反序列化为java对象
-    public  Object byte2obj(byte[] bytes) throws Exception {
-        Object ret = null;
-        ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
-        ObjectInputStream in = new ObjectInputStream(bais);
-        ret = in.readObject();
-        in.close();
-        return ret;
-    }
-
     public int getUserId() {
         return userId;
     }
@@ -88,20 +62,21 @@ public class UserExam {
         this.courseId = courseId;
     }
 
-    public List<Integer> getAnswers() throws Exception{
-        return (List<Integer>)byte2obj(answers);
+    public List<Integer> getAnswers() {
+        return (List<Integer>) Serialization.byte2obj(answers);
     }
 
-    public void setAnswers(List<Integer> answers) throws Exception {
-        this.answers = obj2byte(answers);
+    public void setAnswers(List<Integer> answers) {
+        this.answers = Serialization.obj2byte(answers);
     }
 
-    public List<Integer> getSubScore() throws Exception {
-        return (List<Integer>)byte2obj(subScore);
+    public List<Integer> getSubScore() {
+        return (List<Integer>)Serialization.byte2obj(subScore);
     }
 
-    public void setSubScore(List<Integer> subScore) throws Exception {
-        this.subScore = obj2byte(subScore);
+    public void setSubScore(List<Integer> subScore) {
+        this.subScore = Serialization.obj2byte(subScore);
+        this.subScore = Serialization.obj2byte(subScore);
     }
 
     public int getTotalScore() {

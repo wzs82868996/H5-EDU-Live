@@ -11,6 +11,35 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity//用这个注解开启 spring security配置验证开启
 public class SecurityConfig extends WebSecurityConfigurerAdapter {//继承WebSecurityConfigurerAdapter适配器且重写configure 函数 来实现访问的控制（那些访问/资源 需要哪些权限）和登录的验证（数据库验证/内存验证）
     @Override
+<<<<<<< HEAD
+=======
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .cors().and()//允许资源的跨域访问
+                .csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/").permitAll()
+                .antMatchers("/user/**").hasRole("USER")
+                .and()
+                .formLogin().loginPage("/login").defaultSuccessUrl("/")
+                .and()
+                .logout().logoutUrl("/logout").logoutSuccessUrl("/login");
+    }
+//                .authorizeRequests()
+//                .antMatchers("/css/**", "/").authenticated()//任何用户
+//                .anyRequest().permitAll()
+//                .mvcMatchers(HttpMethod.GET, "/**").permitAll()
+//                .and()
+//                .formLogin().loginPage("/login").successForwardUrl("/").failureForwardUrl("/login-error").usernameParameter("username").passwordParameter("password")
+//                .and().exceptionHandling().accessDeniedPage("/eception/403")
+//                .and().sessionManagement().maximumSessions(2).expiredUrl("/login?expired");
+
+    @Override
+    public void configure(WebSecurity web) throws Exception{
+        web.ignoring().antMatchers("/css/**", "/img/**", "/plugins/**");
+    }
+
+>>>>>>> 4f97aca82a6a38af1c1af482d678d0449af70477
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         //inMemoryAuthentication 从内存中获取
         auth.

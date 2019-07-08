@@ -1,7 +1,6 @@
 package h5EDULive.dao.domain;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "teacher_course")
