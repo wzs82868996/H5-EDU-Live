@@ -1,0 +1,19 @@
+<html>
+<head>
+    <title>JWPlayer</title>
+    <script type = "text/javascript" src="jwplayer.js"></script>
+</head>
+<body>
+<div id = "player">
+    <script type="text/javascript">
+        jwplayer("player").setup({
+            flashplayer: "player.swf",
+            image: "preview.jpg",
+            file: "stream1562291721563",
+            //file:"/streams/cut.mp4",
+            streamer: "rtmp://39.106.107.209/oflaDemo"
+        });
+    </script>
+</div>
+</body>
+</html>
