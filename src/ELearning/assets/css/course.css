@@ -419,6 +419,15 @@ body {
 	border: 1px solid #E8E8E8
 }
 
+.courselist img{
+	border-radius:3px 3px 0 0;
+	width:240px
+}
+
+.courselist p{
+
+}
+
 .courTit {
 	text-align: center;
 	margin-top: 10px;
@@ -442,13 +451,26 @@ body {
 .gray span {
 	font-style: normal;
 	float: left;
-	margin-left: 5px;
+	margin-left: 20px;
+	text-align: center;
+	margin-top: 13px;
+
 }
 
-.gray span.sp1 {
+.sp1 {
 	float: right;
 	margin-left: 0;
-	margin-right: 5px;
+	margin-right: 20px;
+	text-align: center;
+	margin-top: 10px;
+
+}
+.sp1 a:link,.sp1 a:visited {
+	color: #333;
+}
+
+.sp1 a:hover {
+	color: #fb5e55;
 }
 
 .courselist {
@@ -1076,6 +1098,7 @@ h3.pingjia {
 }
 
 .graylink:link,.graylink:visited {
+
 	color: #333;
 	text-decoration: none
 }
