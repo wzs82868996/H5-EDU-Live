@@ -5,27 +5,6 @@
         <title>个人主页</title>
         <script type="application/javascript" src="jquery-3.4.1.js"></script>
         <script>
-            function checkLogin() {
-                $.ajax({
-                    url:"/checkLogin",
-                    type:"get",
-                    data:userId,
-                    dataType:"json",
-                    contentType:"application/json",
-                    success:function (response) {
-                        if(response.status === "SUCCESS")
-                            loadExams();
-                        else
-                            $(location).attr('href', '/login');
-                    },
-                    error: function (XMLHttpRequest, textStatus) {
-                        console.log(XMLHttpRequest.status);
-                        console.log(XMLHttpRequest.readyState);
-                        console.log(textStatus);
-                    }
-                });
-            }
-
             function loadExams() {
                 $.ajax({
                     url:"/homepage-exam/summaries",
@@ -35,13 +14,13 @@
                     contentType:"application/json",
                     success:function (examList) {
                         var examsDiv = $("#exams");
-                        for(var i = 0; i < examList.length; i++)
-                            examsDiv.append($("<a href='/homepage-exam/exam?"+examList[i].courseId+"'>" +
-                                "<p>" + examList[i].name + "</p>" +
-                                "<img src='"+examList[i].coursePic+"'/>" +
-                                "<p>考试发布时间：" + examList[i].time + "</p>" +
-                                "<p>满分：" + examList[i].maxScore + "</p>" +
-                                "<p>您的得分：" + examList[i].totalScore + "</p></a>"));
+                        for (var exam in examList)
+                            examsDiv.append($("<a href='/homepage-exam/exam?=" + exam.courseId + "'>" +
+                                "<p>" + exam.name + "</p>" +
+                                "<img src='"+exam.coursePic+"'/>" +
+                                "<p>考试发布时间：" + exam.time + "</p>" +
+                                "<p>满分：" + exam.maxScore + "</p>" +
+                                "<p>您的得分：" + exam.totalScore + "</p></a>"));
                     },
                     error: function (XMLHttpRequest, textStatus) {
                         console.log(XMLHttpRequest.status);
@@ -53,7 +32,7 @@
         </script>
     </head>
 
-    <body onload="checkLogin()">
+    <body onload="loadExams()">
         <header>
 
         </header>
