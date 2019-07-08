@@ -5,14 +5,19 @@ import h5EDULive.dao.domain.User;
 import h5EDULive.service.UserService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
 
 @Service
 public class UserServiceImpl implements UserService {
     @Resource
     private UserRepository userRepository;
+
+    @Override
+    public User getInfo(int id) {
+        return userRepository.findById(id);
+    }
 
     /* 注册 */
     @Override
@@ -21,7 +26,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
     public boolean insert(User user) {
         encryptPassword(user);
         return userRepository.save(user) != null;
@@ -85,5 +89,10 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void updateLocation(int id, String location) {
         userRepository.updateUserLocation(id, location);
+    }
+
+    @Override
+    public void updateDescription(int id, String description) {
+        userRepository.updateUserDescription(id, description);
     }
 }

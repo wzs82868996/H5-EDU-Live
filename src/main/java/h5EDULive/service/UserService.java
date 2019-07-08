@@ -1,8 +1,12 @@
 package h5EDULive.service;
 
-import h5EDULive.dao.domain.User;
 
+import h5EDULive.dao.domain.User;
+import org.springframework.stereotype.Service;
+
+@Service
 public interface UserService {
+    User getInfo(int id);
 
     boolean isExist(String mobile);
 
@@ -14,16 +18,18 @@ public interface UserService {
 
     void updateName(int id, String name);
 
-    void updateMajor(int id,String major);
+    void updateMajor(int id, String major);
 
-    void updateGender(int id,String gender);
+    void updateGender(int id, String gender);
 
-    void updateBirth(int id,String birth);
+    void updateBirth(int id, String birth);
 
     void updateProfile(int id, String profile);
 
     void updateMail(int id, String mail);
 
-    void updateLocation(int id,String location);
+    void updateLocation(int id, String location);
+
+    void updateDescription(int id, String description);
 
 }
