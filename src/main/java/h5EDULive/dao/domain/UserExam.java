@@ -3,10 +3,6 @@ package h5EDULive.dao.domain;
 import h5EDULive.Util.Serialization;
 
 import javax.persistence.Entity;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.List;
 
 import javax.persistence.*;

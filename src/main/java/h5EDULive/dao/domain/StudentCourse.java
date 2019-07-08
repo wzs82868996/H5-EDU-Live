@@ -3,10 +3,6 @@ package h5EDULive.dao.domain;
 import h5EDULive.Util.Serialization;
 
 import javax.persistence.*;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 
 @Entity
 @Table(name = "stu_course")
