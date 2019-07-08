@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script type="application/javascript" src="jquery-3.4.1.js"></script>
+        <script>
+            function loadExam() {
+                $.ajax({
+                    url: "/homepage-exam/exam/detail",
+                    type: "post",
+                    data: "",
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function (examDetail) {
+                        $("#courseName").text(examDetail.name);
+                        $("#label").text(examDetail.label);
+                        $("#lecture").text(examDetail.lecture);
+                        $("#time").text(examDetail.time);
+                        $("#duration").text(examDetail.duration);
+                        $("#maxScore").text(examDetail.maxScore);
+
+                        if (examDetail.totalScore === -1)
+                        // TODO
+                            for (var i = 0; i < examDetail.subtitle.length; i++)
+                                $("#subTitles").append($("<li></li>"));
+                        // TODO
+                    },
+                    error: function (XMLHttpRequest, textStatus) {
+                        console.log(XMLHttpRequest.status);
+                        console.log(XMLHttpRequest.readyState);
+                        console.log(textStatus);
+                    }
+                });
+            }
+
+            function submit() {
+                var url = window.location.href;
+                var index = url.lastIndexOf("\=");
+                var courseId = url.slice(index + 1);
+
+                var answers = [];
+                // TODO
+                //for (var )
+                    //answers.push();
+                $.ajax({
+                    url: "/homepage-exam/exam/detail?courseId=" + courseId,
+                    type: "post",
+                    data: answers,
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function () {
+                        // TODO
+                    },
+                    error: function (XMLHttpRequest, textStatus) {
+                        console.log(XMLHttpRequest.status);
+                        console.log(XMLHttpRequest.readyState);
+                        console.log(textStatus);
+                    }
+                })
+            }
+        </script>
+    </head>
+
+    <body onload="loadExam()">
+        <p id="courseName"></p>
+        <p id="label"></p>
+        <p id="lecture"></p>
+        <p id="time"></p>
+        <p id="duration"></p>
+        <p id="maxScore"></p>
+        <ul id="subTitles"></ul>
+
+
+    </body>
+</html>
