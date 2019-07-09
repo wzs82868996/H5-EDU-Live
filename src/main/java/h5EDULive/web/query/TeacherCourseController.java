@@ -84,4 +84,8 @@ public class TeacherCourseController {
         return JsonResult.strToJson(webPaths);
     }
 
+    @RequestMapping("/getStreamName")
+    public void getStreamName(String streamName) {
+
+    }
 }

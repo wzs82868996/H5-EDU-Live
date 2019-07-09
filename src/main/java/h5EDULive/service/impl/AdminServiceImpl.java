@@ -41,36 +41,54 @@ public class AdminServiceImpl implements AdminService {
         catch (Exception e){
             return "";
         }
-        return null;
+        return "SUCCESS";
     }
 
     @Override
     public List<Course> getAllCourses() {
-        return null;
+        return courseRepository.findAll();
     }
 
     @Override
     public String removeCourse(int courseId) {
-        return null;
+        try{
+            courseRepository.deleteById(courseId);
+        }
+        catch (Exception e){
+            return "";
+        }
+        return "SUCCESS";
     }
 
     @Override
     public List<Exam> getAllExams() {
-        return null;
+        return examRepository.findAll();
     }
 
     @Override
-    public String removeExam(int examId) {
-        return null;
+    public String removeExam(int courseId) {
+        try{
+            examRepository.deleteById(courseId);
+        }
+        catch (Exception e){
+            return "";
+        }
+        return "SUCCESS";
     }
 
     @Override
     public List<Post> getAllPosts() {
-        return null;
+        return postRepository.findAll();
     }
 
     @Override
     public String removePost(int postId) {
-        return null;
+        try{
+            postRepository.deleteById(postId);
+        }
+        catch (Exception e){
+            return "";
+        }
+        return "SUCCESS";
     }
 }

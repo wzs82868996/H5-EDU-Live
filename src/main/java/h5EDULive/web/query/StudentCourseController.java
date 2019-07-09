@@ -57,4 +57,10 @@ public class StudentCourseController {
     {
         return JsonResult.strToJson(stuCourseService.getRecord(id));
     }
+
+    @RequestMapping("/student/live")
+    public String getLive() {
+        return "/live";
+    }
+
 }
