@@ -12,6 +12,25 @@
 <!-- InstanceEndEditable -->
 <!-- InstanceBeginEditable name="head" -->
 <!-- InstanceEndEditable -->
+    <script>
+        function search() {
+            var keywords = $("#key").val();
+            $.ajax({
+                url: "/search?keywords=" + keywords + "&type=course",
+                data:"",
+                success:function(response){
+                    alert(response)
+                },
+                error: function (XMLHttpRequest, textStatus) {
+                    console.log(XMLHttpRequest.status);
+                    console.log(XMLHttpRequest.readyState);
+                    console.log(textStatus);
+
+                }
+
+            })
+        }
+    </script>
 
 </head>
 
@@ -48,10 +67,10 @@
 <div class="coursecont">
     <div class="courseleft">
 	<span class="select">     	
-      <input type="text" value="请输入关键字" class="pingjia_con"/>
-      <a href="#" class="sellink"></a>        
+      <input id="key" type="text" value="请输入关键字" class="pingjia_con"/>
+      <button type="button" class="sellink" onclick="search()"></button>
     </span>
-    <ul class="courseul">
+    <ul class="courseul" id="searchcourseul">
     <li class="curr" style="border-radius:3px 3px 0 0;background:#fb5e55;"><h3 style="color:#fff;"><a href="#" class="whitea">全部课程</a></h3>
     <li>
     <h4>财会金融</h4>
@@ -93,14 +112,6 @@
 <div class="clearh"></div>
 <div class="foot">
 <div class="fcontainer">
-      <!--<div class="fwxwb">
-	       <div class="fwxwb_1">
-		       <span>关注微信</span><img width="95" alt="" src="images/num.png">
-		   </div>
-           <div>
-               <span>关注微博</span><img width="95" alt="" src="images/wb.png">
-		   </div>	              
-      </div>-->
       <div class="fmenu">
 	     <p><a href="#">关于我们</a> | <a href="#">联系我们</a> | <a href="#">优秀讲师</a> | <a href="#">帮助中心</a> | <a href="#">意见反馈</a> | <a href="#">加入我们</a></p>
       </div>
@@ -144,7 +155,7 @@
                         "<p class='sp1'><a href='/teacher/teacher?=" + course.teacherId + "'>讲师:" + course.lecture + "</a></p></div></li>");
 
                 },
-                error: function (XMLHttpRequest, courseStatus) {
+                error: function (XMLHttpRequest, textStatus) {
                     console.log(XMLHttpRequest.status);
                     console.log(XMLHttpRequest.readyState);
                     console.log(textStatus);
@@ -153,6 +164,13 @@
 
             }
         );
+      /* $.ajax({
+           url: "/test",
+           type: "post",
+           data: "",
+           dataType: "json",
+           contentType: "application/json",
+       })*/
     //var coursesUl = $("#courseulr");
     // for (var course in courseList)
     /* var course={};

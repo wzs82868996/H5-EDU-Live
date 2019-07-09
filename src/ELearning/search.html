@@ -22,7 +22,7 @@
     </div>
 </div>
 <div style="width: 100%;height: 47px"></div>
-<div class="indexTable_con" style="display: block">
+<div id="coursesearch" class="indexTable_con" style="display: block">
     <div class="indexTable_son">
         <a href="">
             <div class="indexTable_sonHead">
@@ -274,6 +274,31 @@
         </ul>
     </div>
 </div>
+<script>
+    let url = window.location.href;
+    let index = url.lastIndexOf("?");
+    let param = url.slice(index + 1);
+    // param = "keyswords=xxx&type=xxx"
+    let params = param.split("&");
+    //params = ["keywords=xxx", "type=xxx"]
+    let keywords = params[0].slice(params[0].indexOf("=") + 1);
+    let type = params[1].slice(params[1].indexOf("=") + 1);
+    $.ajax({
+        url: "/search/" + type,
+        data: keywords,
+        dataType: "text",
+        contentType: "application/json",
+        success:function(resultList){
+            for (let result in resultList)
+                $("#coursesearch").append("<div class")
+        },
+        error: function (XMLHttpRequest, textStatus) {
+            console.log(XMLHttpRequest.status);
+            console.log(XMLHttpRequest.readyState);
+            console.log(textStatus);
+        }
+    })
+</script>
 </body>
 </html>
 <script src="assets/js/jquery.min.js"></script>
