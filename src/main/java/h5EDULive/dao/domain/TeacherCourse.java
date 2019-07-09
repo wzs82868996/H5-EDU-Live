@@ -5,7 +5,8 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "teacher_course")
-public class TeacherCourse  {
+public class TeacherCourse implements Serializable {
+    private final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

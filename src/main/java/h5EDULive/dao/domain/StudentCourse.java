@@ -1,12 +1,6 @@
 package h5EDULive.dao.domain;
 
-import h5EDULive.Util.Serialization;
-
 import javax.persistence.*;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 
 @Entity
 @Table(name = "stu_course")
@@ -19,28 +13,14 @@ public class StudentCourse {
     @Column(name = "course_id")
     private int courseId;
 
-    @Lob
-    @Basic(fetch=FetchType.LAZY)
-    @Column(name="teacher",columnDefinition="longblob")
-//    private User teacher;
-    private byte[] teacher;
-
-    public byte[] getByte(){
-        return teacher;
-    }
-
-    public User getTeacher() {
-        return (User) Serialization.byte2obj(teacher);
-    }
-
-    public void setTeacher(User ateacher) {
-        this.teacher=Serialization.obj2byte(ateacher);
-    }
-
     public StudentCourse(){}
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getStuId() {
@@ -58,6 +38,4 @@ public class StudentCourse {
     public void setCourseId(int courseId) {
         this.courseId = courseId;
     }
-
-
 }

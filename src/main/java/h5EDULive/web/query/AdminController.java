@@ -14,4 +14,24 @@ public class AdminController {
     public String removeUser(int userId) {
         return adminService.removeUser(userId);
     }
+
+    @RequestMapping("/admin/removeCourse")
+    public String removeCourse(int courseId) {
+        return adminService.removeCourse(courseId);
+    }
+
+    @RequestMapping("/admin/removeExam")
+    public String removeExam(int courseId) {
+        return adminService.removeExam(courseId);
+    }
+
+    @RequestMapping("/admin/removePost")
+    public String removePost(int postId) {
+        return adminService.removePost(postId);
+    }
+
+//    @RequestMapping("/admin/removeResponse")
+//    public String removeResponse(int resId) {
+//        return adminService.removeResponse(resId);
+//    }
 }

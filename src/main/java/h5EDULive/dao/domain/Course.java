@@ -1,8 +1,17 @@
 package h5EDULive.dao.domain;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
+@DynamicUpdate
+@DynamicInsert
 @Table(name = "course")
 public class Course {
     @Id
@@ -16,7 +25,7 @@ public class Course {
     private String depiction;
 
     @Column(name = "pubdate")
-    private String pubDate;
+    private Date pubDate;
     private String state;
     private String video;
     private String pic;
@@ -67,11 +76,11 @@ public class Course {
         this.depiction = depiction;
     }
 
-    public String getPubDate() {
+    public Date getPubDate() {
         return pubDate;
     }
 
-    public void setPubDate(String pubDate) {
+    public void setPubDate(Date pubDate) {
         this.pubDate = pubDate;
     }
 
@@ -91,4 +100,11 @@ public class Course {
     public void setVideo(String video) {
         this.video = video;
     }
+
+    public String getPubTime(){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String dateString = formatter.format(pubDate);
+        return dateString;
+    }
+
 }

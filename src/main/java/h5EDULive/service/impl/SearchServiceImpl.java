@@ -9,7 +9,6 @@ import h5EDULive.dao.domain.Exam;
 import h5EDULive.dao.domain.Post;
 import h5EDULive.service.SearchService;
 import h5EDULive.web.dto.PostSummary;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Pageable;
 
@@ -71,3 +70,4 @@ public class SearchServiceImpl implements SearchService {
         return (String[])list.toArray();
     }
 }
+

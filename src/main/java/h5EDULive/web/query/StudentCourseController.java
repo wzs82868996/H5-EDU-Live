@@ -6,7 +6,6 @@ import h5EDULive.service.impl.StudentCourseServiceImpl;
 import h5EDULive.web.dto.JsonResult;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -18,6 +17,7 @@ public class StudentCourseController {
         this.stuCourseService = stuCourseService;
     }
 
+    @ResponseBody
     @RequestMapping("/student/list")
     public JSONArray getList(int id)
     {
@@ -53,8 +53,14 @@ public class StudentCourseController {
 
     @ResponseBody
     @RequestMapping("/student/record")
-    public JSONObject getRecord(@RequestParam("id")int id)
+    public JSONObject getRecord(int id)
     {
         return JsonResult.strToJson(stuCourseService.getRecord(id));
     }
+
+    @RequestMapping("/student/live")
+    public String getLive() {
+        return "/live";
+    }
+
 }

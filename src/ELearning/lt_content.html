@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+    <link rel="stylesheet" href="assets/css/reset.css"/>
+    <link rel="stylesheet" href="assets/css/global.css"/>
+</head>
+<body style="background-color: #f4f4f4;">
+<div class="writeHead">
+    <div class="writeHead_top center">
+        <a href="community.html"><img src="assets/images/communityImage/backIcon.png" alt="" class="backBtn"/></a>
+        <h1>帖子内容</h1>
+    </div>
+</div>
+<script>
+    var url = window.location.href;
+    var indexNum = url.lastIndexOf("\=");
+    var postId=url.slice(indexNum+1);
+    function initPost() {
+        $.ajax({
+            type: "post",
+            url: "/community" + postId + "/getPost",
+            dataType: "json",
+            data: "",
+            success: function succ(response) {
+                var responseDiv = $("#responseDiv");
+                responseDiv = "<div id='posts' class=\"lt_contentTop\"  style=\"width: 100%;height: 46px\" >"
+                    + "<p class=\"indexTable_sonHead\" href='\"ta.html\"'>" + response.author + "</p>"
+                    + "<h1 class=\"lt_contentTop_Title\">" + response.localTitle + "</h1>"
+                    + "<p>" + response.Body + "</p>"
+                    + "<div class=\"ltCon_detail\">" + response.mbody + "</div>"
+                    + "<ul class=\"indexTable_conFoot clearfix\">"
+                    + "<li>" + response.pubTime + "</li>"
+                    + "<li><button class='layui-btn layui-btn-xs' onclick='function liked() {responce[i].like+=1; window.location.reload();}'>赞</button>" + response[i].like + "</li>"
+                    // + "<li>最新回复时间：" + postList[i].latestTime + "</li>"
+                    + "<div class='ltCon_pend'>"
+                    + "<p class=\"ltCon_pendFont center\">评论区</p>"
+                    + "</div>"
+                    + "</ul>";
+                var commentDiv = $("#commentDiv");
+
+                function reply() {
+                    let oSpan = document.createElement('<input type="text" placeholder="加入讨论吧" value="@" id="something">');
+                    let something = $("#something");
+                    commentDiv.appendChild(oSpan)
+                }
+
+                if (response.length > 0) {
+                    for (var i = 0; i < response.length; i++) {
+                        commentDiv = "<div id='comment.Div' class='lt_contentTop_Msg'>"
+                            + "<a href=''>"
+                            + "<div class='ltConPic' id=" + response.resId + ">" + "<img src='+ response[i].responderHeadPic + '></div>"
+                            + " <p class='ltCon_pendCen_right'>" + response[i].responder + "</p>"
+                            + "<span>" + response.respondTime + "</span>"
+                            + "<p class=\"ltReplay\">回复 <a href='/ta?Id=" + response.pId + ">" + response.respondeer + "</a> " + response.concent + "</p>"
+                            + "<div class='ltDo'><span onclick='reply()'>回复</span></div>"
+                            + "</a>"
+                            // + "<button class=\"ltCon_collect\">收藏</button>"
+                            + "</div>"
+                            + "}";
+                        commentDiv.append(responseDiv);
+                    }
+                } else {
+                    alert(response.status);
+                }
+                error:function err() {
+                    alert("糟糕，出错了！")
+                }
+            }
+        });
+    }
+</script>
+<div style="width: 100%;height: 46px"></div>
+<div id="responseDiv" class="lt_contentTop">
+    <h1 class="lt_contentTop_Title">广州4月19号举行限外听证会！2018年是否会实行车牌限行？</h1>
+    <div class="lt_contentTop_Msg">
+        <a href="">
+            <div class="ltConPic"><img src="assets/images/communityImage/cs.png" alt=""/></div>
+            <p>坦诚相待</p>
+        </a>
+        <button class="ltCon_collect">收藏</button>
+    </div>
+    <div class="ltCon_detail">
+        <p>拍王深耕广州竞价3年，最近听到很多广州即将限行的消息。作为一个一线城市，广州是唯一一个没有限行的城市。所以拍王预测，2018年，广州限行的正式方案应该会出炉。（网络上流传的限行时段以及区域图）</p>
+    </div>
+</div>
+<div id="commentDiv" class="ltCon_pend">
+    <p class="ltCon_pendFont center">评论区</p>
+    <div class="ltCon_pendCen center">
+        <div class="ltCon_pendCen_left">
+            <a href=""><img src="assets/images/communityImage/cs.png" alt=""/></a>
+        </div>
+        <div class="ltCon_pendCen_right">
+            <a href=""><h6>坦诚相待</h6></a>
+            <span>8分钟前</span>
+            <div class="clear"></div>
+            <p class="ltReplay">回复 <a href="">嘿嘿嘿</a> 那价格还是很低啊，知道怎么改竞价吗？</p>
+            <div class="ltDo"><span>回复</span></div>
+        </div>
+    </div>
+    <div class="ltCon_pendCen center">
+        <div class="ltCon_pendCen_left">
+            <a href=""><img src="assets/images/communityImage/cs.png" alt=""/></a>
+        </div>
+        <div class="ltCon_pendCen_right">
+            <a href=""><h6>坦诚相待</h6></a>
+            <span>8分钟前</span>
+            <div class="clear"></div>
+            <p class="ltReplay"> 车子已经提好了，临牌还有一个月时间，想你拍用完再去上牌，我想先去交税可以吗？哪里可以交，有人知道吗</p>
+            <div class="ltDo"><span>回复</span></div>
+        </div>
+    </div>
+    <div class="ltCon_pendCen center">
+        <div class="ltCon_pendCen_left">
+            <a href=""><img src="assets/images/communityImage/cs.png" alt=""/></a>
+        </div>
+        <div class="ltCon_pendCen_right">
+            <a href=""><h6>坦诚相待</h6></a>
+            <span>8分钟前</span>
+            <div class="clear"></div>
+            <p class="ltReplay"> 车子已经提好了，临牌还有一个月时间，想你拍用完再去上牌，我想先去交税可以吗？哪里可以交，有人知道吗</p>
+            <div class="ltDo"><span>回复</span></div>
+        </div>
+    </div>
+</div>
+<div style="width: 100%;height: 50px"></div>
+<div class="ltConFoot">
+    <div class="ltConFoot_cen center">
+        <input type="text" placeholder="说说看法"/>
+        <input type="submit" value=""/>
+        <button class="ltCon_collect" id="send">发送</button>
+    </div>
+</div>
+</body>
+</html>
+<script src="assets/js/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
