@@ -13,7 +13,8 @@ public interface AdminService {
     List<Course> getAllCourses();
     String removeCourse(int courseId);
     List<Exam> getAllExams();
-    String removeExam(int examId);
+    String removeExam(int courseId);
     List<Post> getAllPosts();
     String removePost(int postId);
+
 }
