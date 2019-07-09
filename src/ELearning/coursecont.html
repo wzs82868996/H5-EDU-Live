@@ -66,53 +66,7 @@
 </div>
 <!-- InstanceBeginEditable name="EditRegion1" -->
 <div id="coursewhole" class="coursecont">
-<!--<div id="courseup" class="coursepic">
-	<div class="course_img"><img src="assets/images/course/c1.jpg" width="500"></div>
-    <div class="coursetitle">
-   		&lt;!&ndash;&lt;!&ndash;<a class="state">更新中</a>
-    	<h2 class="courseh2">会计基础</h2>    
-        <p class="courstime">总课时：<span class="course_tt">30课时</span></p>
-		<p class="courstime">课程时长：<span class="course_tt">3小时20分</span></p>
-        <p class="courstime">学习人数：<span class="course_tt">25987人</span></p>
-		<p class="courstime">讲师：马老师</p>&ndash;&gt;
-		<p class="courstime">课程评价：<img width="71" height="14" src="assets/images/evaluate/evaluate5.png">&nbsp;&nbsp;<span class="hidden-sm hidden-xs">5.0分（10人评价）</span></p>
-        &lt;!&ndash;<p><a class="state end">完结</a></p>&ndash;&gt;
-        <span class="coursebtn"><a class="btnlink" href="coursecont1.html">加入学习</a><a class="codol sc" href="#">收藏课程</a></span>
-		<div style="clear:both;"></div>
-		&lt;!&ndash;<div id="bds">
-            <script>
-			window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"24"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
-			</script>&ndash;&gt;
-       </div>&ndash;&gt;
-    </div>
-    <div class="clearh"></div>-->
 </div>
-
-
-<!--<div class="clearh"></div>
-<div class="coursetext">
-	&lt;!&ndash;<h3 class="leftit">课程简介</h3>
-    <p class="coutex">本课程主要针对重新改版后的新大纲会计从业资格考试的学习，主要为零基础学生顺利通过会计从业考试而设立！内容包括会计基础、财经法规和职业道德、电算化三科视频课程全系列。 本教程为2014最新版教材课程详细讲解，学完后可以直接考证，也可以提高会计业务基础知识</p>
-	<div class="clearh"></div>
-&ndash;&gt;
-</div>-->
-
-
-<!--<div class="courightext">-->
-<!--<div class="ctext">-->
-<!--    <div class="cr1">-->
-<!--    <h3 class="righttit">授课讲师</h3>-->
-<!--    <div class="teacher">-->
-<!--    <div class="teapic ppi">-->
-<!--    <a href="teacher.html" target="_blank"><img src="assets/images/character/teacher.png" width="80" class="teapicy" title="张民智"></a>-->
-<!--    <h3 class="tname"><a href="teacher.html" class="peptitle" target="_blank">张民智</a><p style="font-size:14px;color:#666">会计讲师</p></h3>-->
-<!--    </div>-->
-<!--    <div class="clearh"></div>-->
-<!--    <p>十年以上Linux从业经验， 培训经验超过八年。在各 个知名培训机构做过金牌 讲师、学科负责人，培训 学员过万人。曾获红帽认 证讲师，微软认证讲师等 资质认证。教学以逻辑性 强、教学细致、知识点准 确著称。</p>-->
-<!--    </div>-->
-<!--    </div>-->
-<!--</div>-->
-
 
    
 </div>
@@ -153,7 +107,7 @@
 </div>
 
 <script>
-   /* $.ajax({
+    $.ajax({
         url:"/course",
         type:"post",
         data:"",
@@ -164,13 +118,28 @@
             coursecontupDiv.append("<div class='coursepic'>" +
                     "<img src='"+course.coursecontPic+"'/>"+
                     "<div class='coursetitle'>"+
-                    "<p class='courseh2'>总时长：<span class='course_tt'>"+course.length+"</span></p>"+
+                    "<a class='state'>"+course.status+"</a>"+
+                    "<h2 class='courseh2'>"+course.name+"</h2>"+
+                    "<p class='coursetime'>总时长：<span class='course_tt'>"+course.length+"</span></p>"+
+                    "<p class='coursetime'>课程分类："+course.class+"</p>"+
                     "<p class='coursetime'>讲师：" + course.lecture+"</p>"+
                     "<p class='coursetime'> 课程评价："+course.estimate+"</p>"+
-                    "</div>"+
+                    "<span class='coursebtn'><a class=\"btnlink\" href=\"coursecont1.html\">加入学习</a><a class=\"codol sc\" href=\"#\">收藏课程</a></span>"+
+                    "</div></div><div class='clearh'></div>"+
                     "<div class='coursetext'>" +
                     "<h3 class='leftit'>课程简介</h3>"+
-                    "<p class='coutex'>"+course.coursepage+"</p></div>");
+                    "<p class='coutex'>"+course.coursepage+"</p></div>"+
+                    "<div class='courightext'>" +
+                    "<div class='ctext'>" +
+                    "<div class='cr1'>" +
+                    "<h3 class='righttit'>授课讲师</h3>"+
+                    "<div class='teacher'>" +
+                    "<div class='teapic ppi'>" +
+                    "<div class='teapicy'>"+
+                    "<a class='peptitle' href='teacher.html'><img class='teapicy' src='"+course.teacherPic+"' title='"+course.lecture+"'/></div>"+
+                    "<h3 class='tname'>"+course.lecture+"</h3></a></div>"+
+                    "<div class='clearh'></div>"+
+                    "<p>"+course.teacherpage+"</p></div></div></div></div>"
 
 
         },
@@ -184,11 +153,13 @@
 
         }
 
-    );*/
+    );
 
-   var course={};
+   /*var course={};
+   course.status="更新中";
    course.name="要好好学习";
-   course.lengh="10min";
+   course.length="10min";
+   course.class="数学";
    course.lecture="随心大傻逼";
    course.estimate="好";
    course.coursepage="哈哈上来看看时间成本看得出行列式的绿卡的萨拉尔的";
@@ -198,9 +169,13 @@
    $("#coursewhole").append("<div class='coursepic'>" +
        "<img src='"+course.coursecontPic+"'/>"+
        "<div class='coursetitle'>"+
-       "<p class='courseh2'>总时长：<span class='course_tt'>"+course.length+"</span></p>"+
+       "<a class='state'>"+course.status+"</a>"+
+       "<h2 class='courseh2'>"+course.name+"</h2>"+
+       "<p class='coursetime'>总时长：<span class='course_tt'>"+course.length+"</span></p>"+
+       "<p class='coursetime'>课程分类："+course.class+"</p>"+
        "<p class='coursetime'>讲师：" + course.lecture+"</p>"+
        "<p class='coursetime'> 课程评价："+course.estimate+"</p>"+
+       "<span class='coursebtn'><a class=\"btnlink\" href=\"coursecont1.html\">加入学习</a><a class=\"codol sc\" href=\"#\">收藏课程</a></span>"+
        "</div></div><div class='clearh'></div>"+
        "<div class='coursetext'>" +
        "<h3 class='leftit'>课程简介</h3>"+
@@ -217,7 +192,7 @@
        "<div class='clearh'></div>"+
        "<p>"+course.teacherpage+"</p></div></div></div></div>"
 
-   );
+   );*/
 
 </script>
 </body>
