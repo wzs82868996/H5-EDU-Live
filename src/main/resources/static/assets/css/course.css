@@ -25,7 +25,7 @@
 	height: 35px;
 	line-height: 35px;
 	text-align: center;
-	background: url(../images/button/btn1.png) no-repeat;
+	background: url(../images/btn1.png) no-repeat;
 	font-size: 14px;
 }
 
@@ -35,7 +35,7 @@
 }
 .tkbtn:hover {
 color: #fff;
-background: url(../images/button/btn_hover1.png) no-repeat;
+background: url(../images/btn_hover1.png) no-repeat;
 }
 
 .tkbtn.tklog {
@@ -125,7 +125,7 @@ background: url(../images/button/btn_hover1.png) no-repeat;
 	position: absolute;
 	top: 0;
 	right: 0px;
-	background: url(../images/homepage/ico_detail_item.png) -6px -2065px no-repeat #FA5C53
+	background: url(../images/ico_detail_item.png) -6px -2065px no-repeat #FA5C53
 }
 
 .sort {
@@ -135,7 +135,7 @@ background: url(../images/button/btn_hover1.png) no-repeat;
 	z-index: 11;
 	width: 45px;
 	height: 29px;
-	background: url(../images/homepage/ico_detail_item.png) -35px -810px no-repeat #FA5C53;
+	background: url(../images/ico_detail_item.png) -35px -810px no-repeat #FA5C53;
 	padding-left: 5px;
 	line-height: 29px;
 	border-radius: 3px 0 0 3px;
@@ -147,7 +147,7 @@ background: url(../images/button/btn_hover1.png) no-repeat;
 }
 
 .sort:hover {
-	background: url(../images/homepage/ico_detail_item.png) -35px -810px no-repeat #FF8080
+	background: url(../images/ico_detail_item.png) -35px -810px no-repeat #FF8080
 }
 
 .sortext {
@@ -193,7 +193,7 @@ body {
 
 .head {
 	height: 60px;
-	background: url(../images/background/bg.png);
+	background: url(../images/bg.png);
 	box-shadow: 0 2px 2px #c5c5c5;
 }
 
@@ -255,6 +255,22 @@ body {
 	color: #fa5c53;
 }
 
+#upload{
+	width: 100px;
+	float: right;
+	height: 30px;
+	line-height: 30px;
+	color: #333;
+	background: #fa5c53;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 3px;
+	-o-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	font-size: 14px;
+}
 .current:hover {
 	color: #FFD2D2
 }
@@ -322,7 +338,7 @@ body {
 }
 
 .link2.he.ico {
-	background: url(../images/homepage/ico_detail_item.png) no-repeat -2px -2285px
+	background: url(../images/ico_detail_item.png) no-repeat -2px -2285px
 }
 
 .link2.he:hover {
@@ -572,7 +588,7 @@ body {
 	display: block;
 	float: left;
 	font-size: 14px;
-	background: url(../images/homepage/ico_detail_item.png) left center no-repeat
+	background: url(../images/ico_detail_item.png) left center no-repeat
 }
 
 .codol:link,.codol:visited {
@@ -734,7 +750,7 @@ body {
 .mulu dt {
 	margin-bottom: 10px;
 	padding-left: 25px;
-	background: url(../images/homepage/ico_detail_item.png) left center no-repeat;
+	background: url(../images/ico_detail_item.png) left center no-repeat;
 	background-position: 0 -2399px;
 }
 
@@ -785,7 +801,7 @@ body {
 	height: 20px;
 	vertical-align: top;
 	display: inline-block;
-	background: url(../images/homepage/ico_detail_item.png) left center no-repeat;
+	background: url(../images/ico_detail_item.png) left center no-repeat;
 	background-position: 0 -2399px;
 }
 
@@ -888,7 +904,7 @@ h3.pingjia {
 .fini {
 	width: 30px;
 	height: 30px;
-	background: url(../images/homepage/ico_detail_item.png) right center no-repeat;
+	background: url(../images/ico_detail_item.png) right center no-repeat;
 	position: absolute;
 	top: 3px;
 	right: -30px
@@ -1057,7 +1073,7 @@ h3.pingjia {
 .forwa {
 	width: 30px;
 	height: 30px;
-	background: url(../images/homepage/ico_detail_item.png) right center no-repeat;
+	background: url(../images/ico_detail_item.png) right center no-repeat;
 	position: absolute;
 	top: 3px;
 	left: -20px
@@ -1526,7 +1542,7 @@ b.noteg {
 	padding: 3px 10px;
 	padding-left: 40px;
 	border-radius: 3px;
-	background: url(../images/homepage/ico_detail_item.png) no-repeat 5px -2104px #3eb0e0;
+	background: url(../images/ico_detail_item.png) no-repeat 5px -2104px #3eb0e0;
 	cursor: pointer
 }
 
@@ -1778,13 +1794,13 @@ h3.courh3 {
 
 .courselabel.clock {
 	padding-left: 20px;
-	background: url(../images/homepage/ico_detail_item.png) 0 -1065px no-repeat;
+	background: url(../images/ico_detail_item.png) 0 -1065px no-repeat;
 	margin-top: 15px;
 }
 
 .courselabel.student {
 	padding-left: 20px;
-	background: url(../images/homepage/ico_detail_item.png) 0 -904px no-repeat;
+	background: url(../images/ico_detail_item.png) 0 -904px no-repeat;
 	margin-left: 80px;
 }
 
@@ -1800,7 +1816,7 @@ h3.courh3 {
 	display: block;
 	width: 200px;
 	height: 200px;
-	background: url(../images/background/bg4.png);
+	background: url(../images/bg4.png);
 }
 
 .mbm.mem_not {
@@ -1824,7 +1840,7 @@ h3.courh3 {
 	width: 120px;
 	padding-left: 25px;
 	min-height: 35px;
-	background: url(../images/smallicon/pictonic-flat_icons.png) no-repeat;
+	background: url(../images/pictonic-flat_icons.png) no-repeat;
 	cursor: pointer;
 	padding-top: 5px;
 	color: #fff;
@@ -1957,7 +1973,7 @@ h3.courh3 {
 	height: 25px;
 	cursor: pointer;
 	text-indent: -9999px;
-	background: url(../images/evaluate/star.png) no-repeat;
+	background: url(../images/star.png) no-repeat;
 }
 
 #star strong {
@@ -1975,7 +1991,7 @@ h3.courh3 {
 	width: 159px;
 	height: 60px;
 	display: none;
-	background: url(../images/homepage/icon.gif) no-repeat;
+	background: url(../images/icon.gif) no-repeat;
 	padding: 10px 10px 0;
 	font-size: 14px;
 }
@@ -2240,7 +2256,7 @@ h3.courh3 {
 	float: right;
 	width: 80px;
 	padding-right: 20px;
-	background: url(../images/homepage/ico_detail_item.png) right center no-repeat;
+	background: url(../images/ico_detail_item.png) right center no-repeat;
 	background-position: 0px -1826px;
 	cursor: pointer
 }
@@ -2315,7 +2331,7 @@ h3.courh3 {
 }
 
 .pageul li.curr a b {
-	background:url(../images/homepage/ico_detail_item.png) no-repeat 0 -2559px
+	background:url(../images/ico_detail_item.png) no-repeat 0 -2559px
 }
 
 .pageul li.curr a:link,.pageul li.curr a:visited {
@@ -2337,7 +2353,7 @@ h3.courh3 {
 	display:inline-block;
 	height:40px;
 	width:25px;
-	background:url(../images/homepage/ico_detail_item.png) no-repeat 0 -1115px
+	background:url(../images/ico_detail_item.png) no-repeat 0 -1115px
 }
 
 .mem-h3 {
@@ -2419,7 +2435,7 @@ h3.courh3 {
 
 .door {
 	height: 60px;
-	background: url(../images/background/bg.png);
+	background: url(../images/bg.png);
 	position: fixed;
 	width: 100%;
 	left: 0;
@@ -2630,4 +2646,92 @@ div.pagination .pageBreak {
 	cursor: default;
 }
 
+/*编辑框*/
+.publish_top {
+	text-align: center;
+	border-bottom: #d9edf7;
+	height: 70px;
+	position: relative;
+	top: 15px;
+	font-family: "Microsoft YAHEI", serif;
+	font-size: 16px;
+}
+.publish_frame form input,select{
+	margin-bottom: 20px;
+	margin-left:10px;
+}
 
+.publish_frame{
+	position: relative;
+	left:100px;
+	right:0;
+	top:10px;
+	padding-bottom: 15px;
+	padding-right: 5px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.membcont #publishDive div{
+	font-size: 6px;
+}
+#publishDiv{
+	width: 600px;
+	height:600px;
+	border-radius:10px ;
+	border:solid 3px #d9edf7;
+	background-color: #FFFFFF;
+	position: fixed;
+	left:0;
+	top:0;
+	right: 0;
+	bottom:0;
+	display:none;
+	z-index: 3;
+	margin: auto;
+}
+
+#mod_profile{
+	font-size:12px;
+	border-radius: 1px;
+}
+
+input[type="text"]:focus,textarea:focus{//为输入框添加阴影
+-moz-box-shadow:2px 1px 10px #06c;
+	-webkit-box-shadow:2px 1px 10px #72D1ED;
+	box-shadow:2px 1px 10px #72D1ED;
+}
+
+#words_limit{
+	color: #999;
+	font-size: 14px;
+	position: relative;
+	text-align: center;
+}
+#publishBottom{
+	position: relative;
+	left:80px;
+	top:20px;
+}
+#save,#close{
+	text-align: center;
+	border-radius: 1px;
+	width:70px;
+	height:35px;
+	background-color: #fb5e55;
+}
+#save{
+	margin-right:40px;
+}
+#publish{
+	position: relative;
+	margin-left: 650px;
+	color:#0e90d2;
+	display: inline;
+}
+#name_box,#label_box,#duration_box{
+	height:20px;
+	border-radius: 1px;
+}
+h3{
+	display: inline;
+}

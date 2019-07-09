@@ -1,27 +1,14 @@
-<!doctype html>
+﻿<!doctype html>
 <html><!-- InstanceBegin template="/Templates/dwt.dwt" codeOutsideHTMLIsLocked="false" -->
 <head>
 <meta charset="utf-8">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>ELearning在线测评与学习平台</title>
+<title>Elearning在线测评与学习平台</title>
 <link rel="stylesheet" href="assets/css/course.css"/>
+<script src="assets/js/jquery-1.8.0.min.js"></script>
 <link rel="stylesheet" href="assets/css/tab.css" media="screen">
-<script src="assets/js/jquery-3.3.1.min.js"></script>
 <script src="assets/js/jquery.tabs.js"></script>
 <script src="assets/js/mine.js"></script>
-<script>
-$(function(){
-	/*左侧栏*/
-    var w = $(window).width();
-    var lw = (w - 1100) / 2 - 10;
-    $(".courseleft").css({
-        "position": "fixed",
-        "top": "80px",
-        "left": lw + 10
-    });
-});
-
-</script>
 <!-- InstanceEndEditable -->
 <!-- InstanceBeginEditable name="head" -->
 <!-- InstanceEndEditable -->
@@ -79,41 +66,51 @@ $(function(){
 </div>
 <!-- InstanceBeginEditable name="EditRegion1" -->
 <div class="coursecont">
-    <div class="courseleft">
-    <ul class="courseul pageul">
-        <li class="curr" style="border-radius:3px 3px 0 0"><a href="#">关于我们<b></b></a></li>
-        <li><a href="page-contact.html" >联系我们<b></b></a></li>
-        <li><a href="#" >帮助中心<b></b></a></li>
-        <li><a href="#" >意见反馈<b></b></a></li>
-        <li style="border-radius:0 0 3px 3px "><a href="#" >加入我们<b></b></a></li>
-    </ul>
+<div class="coursepic tecti">
+	<div class="teaimg">
+    <img src="assets/images/character/teacher.jpg" width="150">
     </div>
-    <div class="courseright pageright" style="min-height:500px;">
-    	<h3 class="mem-h3">关于我们</h3>
-        <div class="clearh"></div>
-        <div class="pagetext">
-            <p>谋刻网(www.moc.cc)——山西省首家O2O教育品牌。</p>
-            <p>
-                谋刻网成立于2014年8月15日，是山西思软科技集团独立运营面向全国的在线教育品牌，致力于为中国大学生，职场白领提供高质量高品质的线上与线下学习课程。课程内容包括大学MOOC（大规模开放式课程），职业技能课程，以及各界名人的经验分享课程。
-            </p>
-            <p>
-                    谋刻网目标用户定位于在校大学生、提升职业技能的城市从业人员和有志于掌握一技之长的进城务工人员，网站通过丰富的在线课程、人性化的网站和不断创新的互动教学模式，为用户提供愉悦便捷的在线学习体验，从而节省学习时间，降低学习成本；更为用户提供了种类丰富和卓越品质的在线技能培训和学习资源，并以扩展的线下服务来保障学习者的学习品质。
-            </p>
-            <div class="imgdiv">
-                <img src="assets/images/subject/tbanner1.jpg" width="740">
-                <p>图片信息一</p>
-            </div>
-            <p>
-                现代人的生活日益紧凑，繁忙的学习和工作挤占了生活的绝大多数时间，而传统技能类教育培训动辄数月的集中式学习已经越来越无法适应在校大学生、职场新人的学习要求。“谋刻网”则利用强大的互联网及移动互联网平台，充分整合用户的碎片时间，将系统的课程体系切分成众多的单元，用户可以灵活选择学习的时间、地点、课程进度，从而最大化的利用碎片时间，提高学习效率。“谋刻网”也致力于打造强大的教育云平台，整合众多的优秀师资和教学资料，将最好的学习资源传递至每个用户的终端。
-            </p>
-            <div class="imgdiv">
-                <img src="assets/images/subject/tbanner2.jpg" width="740">
-                <p>图片信息二</p>
-            </div>
-        </div>
+    <div class="teachtext">
+    	<h3>马嫱&nbsp;&nbsp;<strong>会计基础、会计电算化讲师</strong></h3>
+        <h4>个人简介</h4>
+        <p>资深财会考试与实务操作讲师；拥有五年财税实务及实操经验。 曾在大型连锁超市担任总会计三年，集团公司两年的会计工作经历。</p>
+        <h4>授课风格</h4>
+        <p>马老师讲授的课程紧扣大纲，重点突出；举例风趣幽默，讲解通俗易懂;传授的学习方法简洁有效；同时，注意与学员进行各种交流，及时解答学员疑惑，反馈学员建议，深受好评。</p>
     </div>
     <div class="clearh"></div>
 </div>
+
+<div class="clearh"></div>
+
+<div class="tcourselist">
+<h3 class="righttit" style="padding-left:50px;">在教课程</h3>
+<ul class="tcourseul">
+	<li>
+	    <span class="courseimg tcourseimg"><a href="coursecont.html" target="_blank"><img width="230" src="assets/images/course/c8.jpg"></a></span>
+	    <span class="tcoursetext">
+	       <h4><a href="coursecont.html" target="_blank" class="teatt">会计从业资格会计基础</a><a class="state">更新中</a></h4>
+	       <p class="teadec">会计从业资格会计基础会计从业资格会计基础会计础会计从业资格会计基础会计从业资格会计基础会计础会计从业资格会计基础会计从业资格会计基础会计础</p>
+	       <p class="courselabel clock">30课时 600分钟<span class="courselabel student">2555人学习</span><span class="courselabel pingjia">评价：<img width="71" height="14" src="assets/images/evaluate.png" data-bd-imgshare-binded="1"></span></p>
+	   </span>
+	   <div style="height:0" class="clearh"></div>
+	</li>
+	<li>
+	     <span class="courseimg tcourseimg"><a href="coursecont.html" target="_blank"><img width="230" src="assets/images/course/c8.jpg"></a></span>
+	     <span class="tcoursetext">
+	        <h4><a href="coursecont.html" target="_blank" class="teatt">会计从业资格会计基础会计从业资格会计基础会计础</a><a class="state end">已完结</a></h4>
+	        <p class="teadec">会计从业资格会计基础会计从业资格会计基础会计础会计从业资格会计基础会计从业资格会计基础会计础会计从业资格会计基础会计从业资格会计基础会计础</p>
+	        <p class="courselabel clock">30课时 600分钟<span class="courselabel student">2555人学习</span><span class="courselabel pingjia">评价：<img width="71" height="14" src="assets/images/evaluate.png" data-bd-imgshare-binded="1"></span></p>
+	     </span>
+	     <div style="height:0" class="clearh"></div>
+	</li>
+<div class="clearh"></div>
+</ul>
+</div>
+
+
+
+
+<div class="clearh"></div>
 </div>
 <!-- InstanceEndEditable -->
 

@@ -95,7 +95,7 @@ body {
 	font-weight: bold
 }
 
-.tab_menu li.current {
+.tab_menu li.current,upload {
 	color: #fff;
 	background: #fb5e55;
 }
@@ -125,7 +125,7 @@ body {
 
 .tab_box .hide {
 	display: none;
-}}
+}
 
 /*登录注册弹出框选项卡*/
 .demo3.rlog {
