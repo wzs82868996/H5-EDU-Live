@@ -2,22 +2,19 @@ package h5EDULive.service.impl;
 
 import h5EDULive.dao.CourseRepository;
 import h5EDULive.dao.StudentCourseRepository;
+import h5EDULive.dao.domain.Course;
 import h5EDULive.dao.domain.StudentCourse;
 import h5EDULive.service.StudentCourseService;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class StudentCourseServiceImpl implements StudentCourseService {
-    @Resource
-    private StudentCourseRepository stuCourseRepository;
-
-    @Resource
-    private CourseRepository courseRepository;
+    private final StudentCourseRepository stuCourseRepository;
+    private final CourseRepository courseRepository;
 
     public StudentCourseServiceImpl(StudentCourseRepository stuCourseRepository, CourseRepository courseRepository) {
         this.stuCourseRepository = stuCourseRepository;
@@ -25,33 +22,32 @@ public class StudentCourseServiceImpl implements StudentCourseService {
     }
 
     /* 根据学生id查找课程名称列表 */
-    public List<String> getList(int id)
+    public List<Course> getList(int id)
     {
         List<StudentCourse> courseId = stuCourseRepository.findByStuId(id);
-        List<String> courses = new ArrayList<>();
-        for (StudentCourse StudentCourse : courseId) {
-            courses.add(courseRepository.findById(StudentCourse.getCourseId()).getName());
+        List<Course> cources = new ArrayList<>();
+        for (StudentCourse studentCourse : courseId) {
+            cources.add(courseRepository.findById(studentCourse.getCourseId()));
         }
-        return courses;
+        return cources;
     }
 
     /* 把课程添加到我的课程里 */
     @Override
-    @Transactional
     public boolean insert(int stuId, int courseId)
     {
-        StudentCourse StudentCourse = new StudentCourse();
-        StudentCourse.setStuId(stuId);
-        StudentCourse.setCourseId(courseId);
-        return stuCourseRepository.save(StudentCourse) != null;
+        StudentCourse stuCourseMapper = new StudentCourse();
+        stuCourseMapper.setStuId(stuId);
+        stuCourseMapper.setCourseId(courseId);
+        return stuCourseRepository.save(stuCourseMapper) != null;
     }
 
     /* 把课程从我的课程里删除 */
-    @Override
     @Transactional
+    @Override
     public void remove(int stuId, int courseId)
     {
-        stuCourseRepository.deleteByCourseIdAndStuId(stuId, courseId);
+        stuCourseRepository.deleteByCourseIdAndStuId(courseId, stuId);
     }
 
     /* 根据课程id查找课程信息 */

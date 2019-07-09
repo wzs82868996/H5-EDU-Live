@@ -2,21 +2,18 @@ package h5EDULive.service.impl;
 
 import h5EDULive.dao.CourseRepository;
 import h5EDULive.dao.TeacherCourseRepository;
+import h5EDULive.dao.domain.Course;
 import h5EDULive.dao.domain.TeacherCourse;
 import h5EDULive.service.TeacherCourseService;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
 public class TeacherCourseServiceImpl implements TeacherCourseService {
-    @Resource
-    private TeacherCourseRepository teacherCourseRepository;
-
-    @Resource
-    private CourseRepository courseRepository;
+    private final TeacherCourseRepository teacherCourseRepository;
+    private final CourseRepository courseRepository;
 
     public TeacherCourseServiceImpl(TeacherCourseRepository teacherCourseRepository, CourseRepository courseRepository) {
         this.teacherCourseRepository = teacherCourseRepository;
@@ -30,31 +27,33 @@ public class TeacherCourseServiceImpl implements TeacherCourseService {
     }
 
     /* 查看课程 */
-    public List<String> getList(int id)
+    public List<Course> getList(int id)
     {
-        return teacherCourseRepository.getList(id);
+        System.out.println(courseRepository.getList(id));
+        return courseRepository.getList(id);
     }
 
     /* 添加课程 */
     @Override
-    @Transactional
     public boolean insert(int tchId, int courseId) {
-        TeacherCourse TeacherCourse = new TeacherCourse();
-        TeacherCourse.setTeacherId(tchId);
-        TeacherCourse.setCourseId(courseId);
-        return teacherCourseRepository.save(TeacherCourse) != null;
+        TeacherCourse teacherCourse = new TeacherCourse();
+        teacherCourse.setTeacherId(tchId);
+        teacherCourse.setCourseId(courseId);
+        return teacherCourseRepository.save(teacherCourse) != null;
     }
 
-    @Override
     @Transactional
+    @Override
     public void delete(int courseId) {
+        courseRepository.deleteById(courseId);
         teacherCourseRepository.deleteByCourseId(courseId);
     }
 
     /* 修改课程信息*/
     @Transactional
+    @Override
     public void modifyInfo(int courseId, String dep)
     {
-        courseRepository.updateDepicitionByCourseId(courseId, dep);
+        courseRepository.updateDepictionByCourseId(courseId, dep);
     }
 }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JWPlayer</title>
+        <script type="text/javascript" src="assets/js/jquery-3.4.1.js"></script>
+        <script>
+            function loadScript() {
+                var streamName = "";
+                $.ajax({
+                    url: "/",
+                    data: "",
+                    contentType: "text/plain",
+                    dataType: "text",
+                    success:function (name) {
+                        streamName = name;
+                    }
+                })
+                var script = "<script type=\"text/javascript\">" +
+                    "        jwplayer('player').setup({" +
+                    "            flashplayer: 'player.swf'," +
+                    "            image: 'preview.jpg'," +
+                    "            file: '" + streamName + "'," +
+                    "            streamer: 'rtmp://39.106.107.209/oflaDemo'" +
+                    "        });" +
+                    "    \<\/script>";
+                $("#player").html(script);
+            }
+        </script>
+        <script type="text/javascript" src="jwplayer.js"></script>
+    </head>
+
+    <body onload="loadScript()">
+        <div id="player"></div>
+    </body>
+</html>
