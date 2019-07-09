@@ -20,6 +20,7 @@ public interface CourseRepository extends JpaRepository<Course, Integer>, JpaSpe
 
     void deleteById(int id);
 
+    @Modifying
     @Query(value = "update course set name=?2 where id=?1",nativeQuery = true)
     void updateNameByCourseId(int courseId, String name);
 
@@ -27,6 +28,7 @@ public interface CourseRepository extends JpaRepository<Course, Integer>, JpaSpe
     @Modifying
     void updateDepictionByCourseId(int courseId, String depiction);
 
+    @Modifying
     @Query(value = "update course set label=?2 where id=?1",nativeQuery = true)
     void updateLabelByCourseId(int courseId, String label);
 
