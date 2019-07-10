@@ -60,6 +60,8 @@ $(function() {
     });
 
     /*提交注册信息*/
+$(document).ready(function () {
+
     $("#register").click(function () {
         var myphone = $("#phone").val();
         var code = $("#identify_number").val();
@@ -101,8 +103,8 @@ $(function() {
             return false;
             //$("#confirm").val(" ");
         }
-        alert(myphone);
-            Bmob.Sms.verifySmsCode("18340018910", 687375).then(function (obj) {
+            Bmob.Sms.verifySmsCode(myphone, code).then(function (obj) {
+                alert(myphone);
                 alert("msg:"+obj.msg);
                 user.name=myphone;
                 user.password=codeBox;
@@ -138,7 +140,8 @@ $(function() {
             });
         //alert("555555555");
     });
-});
+})
+})  ;
 
 
 

@@ -5,8 +5,9 @@
     <!-- InstanceBeginEditable name="doctitle" -->
     <title>Elearning在线测评与学习平台</title>
     <link rel="stylesheet" href="assets/css/course.css"/>
+    <link rel="stylesheet" href="assets/css/publish_course.css"/>
     <link rel="stylesheet" href="assets/css/member.css"/>
-    <script src="assets/js/jquery-1.8.0.min.js"></script>
+    <script src="assets/js/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="assets/css/tab.css" media="screen">
     <script src="assets/js/jquery.tabs.js"></script>
     <script src="assets/js/mine.js"></script>
@@ -18,10 +19,6 @@
             });
         });
     </script>
-    <!-- InstanceEndEditable -->
-    <!-- InstanceBeginEditable name="head" -->
-    <!-- InstanceEndEditable -->
-
 </head>
 
 <body>
@@ -111,60 +108,52 @@
                     <h3 class="edition"> 填写课程信息</h3>
                 </div>
                 <div class="publish_frame">
-                    <form>
-                        <!--                    名称-->
+<!--                    <form>-->
+                        <!--名称-->
                         <div>
-                            <label class="name">课程名称</label><label style="color: red">*</label>
-                            <input type="text" id="name_box">
+                            <label class="name">课程名称</label>
+                            <input type="text" id="name_box"><label style="color: red">*</label><label id="name_check" style="color: red"></label>
                         </div>
-                        <!--                    标签——下划线形式-->
+                        <!--标签——下划线形式-->
                         <div>
-                            <label class="label">添加标签</label><label style="color: red">*</label>
-                            <input type="text" id="label_box">
+                            <label class="label">添加标签 </label>
+                            <input type="text" id="label_box"><label style="color: #999;font-size: 14px"> 不同标签之间使用逗号隔开</label>
                         </div>
                         <!--                    时长-->
                         <div>
-                            <label class="duration">课程时长</label><label style="color: red">*</label>
-                            <input type="text" id="duration_box"><label>min</label>
+                            <label class="duration">课程时长</label>
+                            <input type="text" id="duration_box"><label>min</label><label style="color: red">*</label><label id="duration_check" style="color: red"></label>
                         </div>
                         <!--课程简介-->
                         <div>
-                            <label class="profile">课程简介</label><label style="color: red">*</label>
-                            <textarea type="text" rows="4" cols="30" id="mod_profile" onkeyup="numChange()">
-                            </textarea>
+                            <label class="profile">课程简介</label>
+                            <textarea type="text" rows="4" cols="40" id="mod_profile" onkeyup="numChange()">
+                            </textarea><label style="color: red">*</label><label id="profile_check" style="color: red"></label>
                             <div id="words_limit">您还可以输入<span id="count">300</span>字</div>
                         </div>
                         <!--                    方式选择-->
                         <div>
-                            <form id="style">
-                                <label class="ifLive">教学方式</label><label style="color: red">*</label>
+                                <label class="ifLive">教学方式</label>
                                 <input type="radio" name="course" value="live" onclick="ifLive()"><label>直播</label>
-                                <input type="radio" name="course" value="video"><label>录播</label>
-                            </form>
+                                <input type="radio" name="course" value="video"><label>录播</label><label style="color: red">*</label><label id="select_check" style="color: red"></label>
                         </div>
                         <!--                    上传图片-->
                         <div>
-                            <form id="imgFile">
                                 <label class="image">上传图片</label><label class="video_lab"></label>
-                                <input type="file" name="file" id="picture" accept="image">
-                            </form>
+                                <input type="file" name="file" id="picture" accept="image"><label id="image_check" style="color: red"></label>
                         </div>
                         <!--                    上传视频-->
                         <div>
-                            <form id="videoFile">
                                 <label class="video">上传视频</label>
-                                <input type="file" name="file" id="video" accept="video">
-                            </form>
+                                <input type="file" name="file" id="video" accept="video"><label id="video_check" style="color: red"></label>
                         </div>
 
                         <div id="publishBottom">
-                            <button type="submit" id="save" onclick="save()">提交</button>
+                            <button type="submit" id="save" onclick="upload()">提交</button>
                             <button type="submit" id="close" onclick="hideEditDiv()">取消</button>
                         </div>
-                    </form>
+<!--                    </form>-->
                 </div>
-
-
             </div>
     </div>
     <div class="clearh"></div>
@@ -172,7 +161,7 @@
 
 <!--尾部-->
     <div class="clearh">
-    <div class="foot">
+        <div class="foot">
         <div class="fcontainer">
             <div class="fwxwb">
                 <div class="fwxwb_1">
@@ -210,6 +199,4 @@
 </div>
 </div>
 </body>
-
-<!-- InstanceEnd -->
 </html>

@@ -2,7 +2,7 @@
 
 /*更新考试页面*/
 $(document).ready(function () {
-    $.ajax("/",{
+    $.ajax("/homepage-exam/summaries",{
         type:"post",
         dataType:"json",
         contentType : "application/json",
@@ -15,47 +15,35 @@ $(document).ready(function () {
             if(examInfo===0){
                 myExams.append(str);
             }else{
-                var id='';
+                var courseId='';
                 var name='';
-                var lecture='';
-                var duration='';
-                var pubdate='';
+                var totalScore='';
+                var subScore=[];
                 var maxScore='';
-                var state='';
-                var label='';
-                var score='';
-                var url='';
-                var solutions=[];
-                var subTitleScore=[];
-                var pic='';
+                var time='';
+                var coursePic=[];
                 //对其中的课程进行信息遍历
                 for(var i in examInfo){
                     var exam=examInfo[i];
-                    id=exam.course_id;
+                    courseId=exam.courseId;
                     name=exam.name;
-                    lecture=exam.lecture;
-                    duration=exam.duration;
-                    pubdate=exam.pubdate;
-                    score=exam.score;
-                    state=exam.state;
-                    label=exam.label;
-                    pic=exam.pic;
+                    time=exam.time;
+                    totalScore=exam.score;
+                    coursePic=exam.coursePic;
                     maxScore=exam.maxScore;
-                    solutions=exam.solutions;
-                    subTitleScore=exam.subTitleScore;
-                    url=exam.page;
+                    subScore=exam.subScore;
                     str='';
                     //根据课程进度进行分类
-                    if(state==="done"){
-                        str+='<li>'+'<div class="courseli">'+'<a href=url target="_blank">'+'<img width="230" src="pic" alt=depiction>'+'</a>'+
-                            '<p class="memb_courname">'+'<a href=url class="blacklink">'+name+'</a>'+'</p>'+ '<div class="mpp">'+ '<div class="lv" style="width:20%;">'+
-                            '</div>'+ '</div>'+ '<p class="goon">'+'<a href=url>'+'<span>'+'查看考试'+'</span>'+'</a>'+'</p>'+ '</div>' +'</li>';
+                    if(totalScore!==null){//查看考试结果
+                        str+='<li>'+'<div class="courseli">'+'<a href="#" target="_blank" onclick="exam_details(courseId)">'+'<img width="230" src="image" alt=depiction>'+'</a>'+
+                            '<p class="memb_courname">'+'<a href="#" class="blacklink" onclick="exam_details(courseId)">'+name+'</a>'+'</p>'+ '<div class="mpp">'+ '<div class="lv" style="width:20%;">'+
+                            '</div>'+ '</div>'+ '<p class="goon">'+'<a href="#" onclick="exam_details(courseId)">'+'<span>'+'查看考试'+'</span>'+'</a>'+'</p>'+ '</div>' +'</li>';
                         $("#examed").append(str);
                     }
-                    else if(state==="undone"){
-                        str+='<li>'+'<div class="courseli">'+'<a href=url target="_blank">'+'<img width="230" src="pic" alt=depiction>'+'</a>'+
-                            '<p class="memb_courname">'+'<a href=url class="blacklink">'+name+'</a>'+'</p>'+ '<div class="mpp">'+ '<div class="lv" style="width:20%;">'+
-                            '</div>'+ '</div>'+ '<p class="goon">'+'<a href=url>'+'<span>'+'查看考试'+'</span>'+'</a>'+'</p>'+ '</div>' +'</li>';
+                    else{//查看新考试
+                        str+='<li>'+'<div class="courseli">'+'<a href="#" target="_blank">'+'<img width="230" src="pic" alt=depiction>'+'</a>'+
+                            '<p class="memb_courname">'+'<a href="#" class="blacklink">'+name+'</a>'+'</p>'+ '<div class="mpp">'+ '<div class="lv" style="width:20%;">'+
+                            '</div>'+ '</div>'+ '<p class="goon">'+'<a href="#">'+'<span>'+'开始考试'+'</span>'+'</a>'+'</p>'+ '</div>' +'</li>';
                         $("#toExam").append(str);
                     }
                 }
@@ -66,3 +54,56 @@ $(document).ready(function () {
         }
     })
 });
+
+function exam_details(course_id){
+    $.ajax("/homepage-exam/exam/detail",{
+        type:"post",
+        dataType:"json",
+        contentType : "application/json",
+        data :'{ userId:'+userId+',courseId:'+course_id+'}',
+        success:function (data) {
+            //保存课程信息
+            var name = data.name;
+            var label = data.label;
+            var lecture = data.lecture;
+            var time = data.time;
+            var duration = data.duration;
+            var maxScore = data.maxScore;
+            var subtitle=[];
+            subtitle=data.subtitle;
+            var subtitleScore=[];
+            subtitleScore = data.subtitleScore;
+            var solutions=[];
+            solutions = data.solutions;
+            var answers=[];
+            answers = data.answers;
+            var subScore=[];
+            subScore  = data.subScore;
+            var totalScore = data.totalScore;
+
+            //更新考试页面
+            var frame=$("iframe");
+            frame.html("")
+
+
+
+        }
+
+})
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

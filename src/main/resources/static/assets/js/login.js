@@ -1,6 +1,7 @@
 /*登录界面*/
 
 
+$(document).ready(function () {
 $("#login").click(function(){
     //检查输入是否为空
     var user={};
@@ -46,4 +47,5 @@ $("#login").click(function(){
             }
         });
     }
+})
 });

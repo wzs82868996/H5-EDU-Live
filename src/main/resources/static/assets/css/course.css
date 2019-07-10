@@ -264,6 +264,7 @@ body {
 	background: #fa5c53;
 	text-align: center;
 	cursor: pointer;
+	border:none;
 	border-radius: 3px;
 	-o-border-radius: 3px;
 	-ms-border-radius: 3px;
@@ -2646,92 +2647,11 @@ div.pagination .pageBreak {
 	cursor: default;
 }
 
-/*编辑框*/
-.publish_top {
-	text-align: center;
-	border-bottom: #d9edf7;
-	height: 70px;
-	position: relative;
-	top: 15px;
-	font-family: "Microsoft YAHEI", serif;
-	font-size: 16px;
-}
-.publish_frame form input,select{
-	margin-bottom: 20px;
-	margin-left:10px;
-}
 
-.publish_frame{
-	position: relative;
-	left:100px;
-	right:0;
-	top:10px;
-	padding-bottom: 15px;
-	padding-right: 5px;
-	margin-left: auto;
-	margin-right: auto;
-}
-.membcont #publishDive div{
-	font-size: 6px;
-}
-#publishDiv{
-	width: 600px;
-	height:600px;
-	border-radius:10px ;
-	border:solid 3px #d9edf7;
-	background-color: #FFFFFF;
-	position: fixed;
-	left:0;
-	top:0;
-	right: 0;
-	bottom:0;
-	display:none;
-	z-index: 3;
-	margin: auto;
-}
 
-#mod_profile{
-	font-size:12px;
-	border-radius: 1px;
-}
 
-input[type="text"]:focus,textarea:focus{//为输入框添加阴影
--moz-box-shadow:2px 1px 10px #06c;
-	-webkit-box-shadow:2px 1px 10px #72D1ED;
-	box-shadow:2px 1px 10px #72D1ED;
-}
 
-#words_limit{
-	color: #999;
-	font-size: 14px;
-	position: relative;
-	text-align: center;
-}
-#publishBottom{
-	position: relative;
-	left:80px;
-	top:20px;
-}
-#save,#close{
-	text-align: center;
-	border-radius: 1px;
-	width:70px;
-	height:35px;
-	background-color: #fb5e55;
-}
-#save{
-	margin-right:40px;
-}
-#publish{
-	position: relative;
-	margin-left: 650px;
-	color:#0e90d2;
-	display: inline;
-}
-#name_box,#label_box,#duration_box{
-	height:20px;
-	border-radius: 1px;
-}
-h3{
-	display: inline;
-}
+
+
+
+
