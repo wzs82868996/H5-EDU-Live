@@ -25,11 +25,8 @@ function teacherApplication(){
         contentType : "application/json",
         data : user,
         success:function (response) {
-            if(response==='SUCCESS'){
+            if(response.status==='SUCCESS'){
                 alert("申请提交成功");
-            }
-            else{
-                alert("申请提交失败");
             }
         },error:function () {
             alert("申请提交失败");
